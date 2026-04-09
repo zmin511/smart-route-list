@@ -10,9 +10,13 @@ export const authOptions: NextAuthOptions = {
   ],
   callbacks: {
     async signIn({ profile }) {
-      const allowed = process.env.ALLOWED_GITHUB_USER;
-      const login = (profile as { login?: string })?.login;
-      return !!allowed && login === allowed;
+      const allowed = process.env.ALLOWED_GITHUB_USER?.trim().toLowerCase();
+      const login = (profile as { login?: string })?.login?.trim().toLowerCase();
+
+      console.log("GitHub signIn:", { allowed, login });
+
+      if (!allowed) return true;
+      return login === allowed;
     },
     async session({ session, token }) {
       if (session.user) {
