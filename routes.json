@@ -1,0 +1,20 @@
+{
+  "groups": [
+    {
+      "id": "grp-gpt",
+      "name": "GPT",
+      "items": [
+        { "id": "gpt-1", "type": "cidr", "value": "104.18.0.0/16" },
+        { "id": "gpt-2", "type": "cidr", "value": "172.64.0.0/16" }
+      ]
+    },
+    {
+      "id": "grp-google",
+      "name": "Google",
+      "items": [
+        { "id": "google-1", "type": "domain", "value": "docs.google.com" },
+        { "id": "google-2", "type": "domain", "value": "gemini.google.com" }
+      ]
+    }
+  ]
+}
