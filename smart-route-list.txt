@@ -1,7 +1,4 @@
-# GPT
-104.18.0.0/16
-172.64.0.0/16
-
-# Google
-docs.google.com
-gemini.google.com
+104.18.0.0/16#GPT 
+172.64.0.0/16#GPT
+docs.google.com#Google
+gemini.google.com#Google
