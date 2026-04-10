@@ -1,28 +1,29 @@
-# Smart Route List Admin
+# Редактор Smart Route List
 
-Admin UI for editing `smart-route-list.txt` directly in the same GitHub repository used by the primary node.
+Админка для редактирования `smart-route-list.txt` прямо в том же GitHub-репозитории, который использует основной сервер.
 
-## Project layout
+## Что лежит в репозитории
 
-- `routes.json` - editable source data
-- `smart-route-list.txt` - generated output used by the primary node
-- `app/`, `components/`, `lib/` - Next.js app for Vercel
+- `routes.json` - вспомогательный исходник
+- `smart-route-list.txt` - основной итоговый файл
+- `backups/` - автоматические резервные копии `smart-route-list.txt` перед сохранением
+- `app/`, `components/`, `lib/` - Next.js приложение для Vercel
 
-## How it works
+## Как это работает
 
-1. Vercel deploys the Next.js app from this repository.
-2. You sign in with the admin username and password from environment variables.
-3. The admin UI reads `routes.json`.
-4. After editing, the admin UI updates:
+1. Vercel поднимает Next.js приложение из этого репозитория.
+2. Вы входите в админку по логину и паролю из переменных окружения.
+3. Приложение читает текущий `smart-route-list.txt` из GitHub.
+4. Перед каждым сохранением создаётся резервная копия текущего `smart-route-list.txt` в папке `backups/`.
+5. После этого админка обновляет:
    - `routes.json`
    - `smart-route-list.txt`
-5. The primary node continues reading `smart-route-list.txt` from the repository root.
 
-## Environment variables
+## Переменные окружения
 
-See `.env.example`.
+Смотрите `.env.example`.
 
-Required values:
+Нужные значения:
 
 - `ADMIN_USERNAME`
 - `ADMIN_PASSWORD`
@@ -33,8 +34,9 @@ Required values:
 - `GITHUB_BRANCH=main`
 - `ROUTES_JSON_PATH=routes.json`
 - `ROUTES_TXT_PATH=smart-route-list.txt`
+- `BACKUP_DIR=backups`
 
-## Local development
+## Локальный запуск
 
 ```bash
 npm install
@@ -42,6 +44,6 @@ cp .env.example .env.local
 npm run dev
 ```
 
-## Deployment
+## Деплой
 
-Connect this repository to Vercel and add the environment variables from `.env.example`.
+Подключите этот репозиторий к Vercel и добавьте переменные окружения из `.env.example`.

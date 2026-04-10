@@ -25,7 +25,7 @@ export default function LoginForm() {
 
     if (!response.ok) {
       const json = await response.json().catch(() => ({}));
-      setError(json.error || "Login failed");
+      setError(json.error || "Не удалось войти");
       setLoading(false);
       return;
     }
@@ -37,7 +37,7 @@ export default function LoginForm() {
   return (
     <form onSubmit={handleSubmit} style={{ display: "grid", gap: 12 }}>
       <label style={{ display: "grid", gap: 6 }}>
-        <span>Username</span>
+        <span>Логин</span>
         <input
           autoComplete="username"
           value={username}
@@ -47,7 +47,7 @@ export default function LoginForm() {
       </label>
 
       <label style={{ display: "grid", gap: 6 }}>
-        <span>Password</span>
+        <span>Пароль</span>
         <input
           type="password"
           autoComplete="current-password"
@@ -62,7 +62,7 @@ export default function LoginForm() {
         disabled={loading}
         style={{ padding: "12px 18px", borderRadius: 10, border: 0, cursor: "pointer" }}
       >
-        {loading ? "Signing in..." : "Sign in"}
+        {loading ? "Вход..." : "Войти"}
       </button>
 
       {error ? <div style={{ color: "#ff8a8a" }}>{error}</div> : null}

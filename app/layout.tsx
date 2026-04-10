@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Smart Route List Admin",
-  description: "Редактор smart-route-list для Vercel + GitHub"
+  title: "Редактор Smart Route List",
+  description: "Редактор smart-route-list для Vercel и GitHub"
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

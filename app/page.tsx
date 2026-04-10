@@ -5,7 +5,7 @@ export default function HomePage() {
     <main style={{ maxWidth: 1100, margin: "0 auto", padding: 24 }}>
       <div style={{ display: "flex", justifyContent: "space-between", gap: 16, alignItems: "center", marginBottom: 16 }}>
         <div>
-          <h1>Smart Route Admin</h1>
+          <h1>Редактор Smart Route List</h1>
           <p>Загрузите текущие группы из GitHub, внесите изменения, проверьте результат и сохраните обновлённый smart-route-list.txt.</p>
         </div>
 
