@@ -7,6 +7,8 @@
 128.116.0.0/16#discord
 192.64.174.0/24#discord
 198.41.128.0/17#discord
+34.126.226.51#discord
+162.159.128.0/18#discord
 46.53.178.107#insta
 179.60.195.174#insta
 45.64.40.0/22#insta
@@ -19,6 +21,8 @@
 66.81.203.7#insta
 124.108.16.224#insta
 198.105.240.0/20#insta
+188.144.96.0/24#insta
+188.144.97.0/24#insta
 104.18.0.0/16#GPT
 142.250.186.115#GPT
 23.35.228.138#GPT
@@ -69,6 +73,19 @@
 20.246.77.240/28#GPT
 172.178.141.0/24#GPT
 40.84.180.128/28#GPT
+8.6.112.0/24#GPT
+8.47.69.0/24#GPT
+chatgpt.com#GPT
+64.233.165.141#GPT
+openai.com#GPT
+18.173.154.0/24#GPT
+18.66.122.0/24#GPT
+3.210.159.207#GPT
+3.162.38.129#GPT
+18.245.175.129#GPT
+18.173.154.5#GPT
+134.0.118.88#GPT
+3.0.0.0/8#GPT
 192.133.77.0/26#x
 x.com#x
 64.63.15.0/24#x
@@ -79,26 +96,16 @@ x.com#x
 202.160.129.0/24#x
 202.160.128.0/24#x
 104.244.42.0/24#x
-188.144.96.0/24#insta
-188.144.97.0/24#insta
-13.107.4.50#microsoft-windows-download
-13.107.5.88#microsoft-windows-download
-20.36.0.0/14#microsoft-windows-download
-20.190.128.0/18#microsoft-windows-download
-204.79.197.219#microsoft-windows-download
-23.72.96.0/19#microsoft-windows-download
-104.81.0.0/16#microsoft-windows-download
-93.184.221.240#microsoft-windows-download
-46.29.239.196#Panaceya
-34.126.226.51#discord
-8.6.112.0/24#GPT
-8.47.69.0/24#GPT
-chatgpt.com#GPT
+13.107.4.50#microsoft
+13.107.5.88#microsoft
+20.36.0.0/14#microsoft
+20.190.128.0/18#microsoft
+204.79.197.219#microsoft
+23.72.96.0/19#microsoft
+104.81.0.0/16#microsoft
+93.184.221.240#microsoft
 rutor.info#Torrent
 rutracker.org#Torrent
-142.250.0.0/16#GPT
-10.10.111.30#GOTO_CHR
-64.233.165.141#GPT
 5.45.0.0/16#youtube
 8.8.4.0/24#youtube
 8.8.8.0/24#youtube
@@ -201,33 +208,11 @@ rutracker.org#Torrent
 216.239.0.0/16#youtube
 217.168.0.0/16#youtube
 google.com#youtube
-openai.com#GPT
-clamav.net#"to VPN"
-elevenlabs.io#"to VPN"
-challenges.cloudflare.com#"to VPN"
-cloudflare.com#"to VPN"
-googleusercontent.com#"to VPN"
-oogleapis.com#"to VPN"
-generativelanguage.googleapis.com#"to VPN"
-ai.google.dev#"to VPN"
-aistudio.google.com1#"to VPN"
-oauth2.googleapis.com#"to VPN"
-accounts.google.com#"to VPN"
-fonts.gstatic.com#"to VPN"
-www.gstatic.com#"to VPN"
-apis.google.com#"to VPN"
-content-storage-upload.googleapis.com#"to VPN"
-cloud.google.com#"to VPN"
-lh3.googleusercontent.com#"to VPN"
-ssl.gstatic.com#"to VPN"
-clientservices.googleapis.com#"to VPN"
 34.0.0.0/15#youtube
 45.64.0.0/16#youtube
 103.4.96.0/22#youtube
 108.176.0.0/15#youtube
 142.251.0.0/16#youtube
-162.159.128.0/18#discord
-18.173.154.0/24#GPT
 youtube.com#youtube
 8.34.208.0/20#youtube
 8.35.192.0/20#youtube
@@ -242,23 +227,8 @@ youtube.com#youtube
 34.3.32.0/19#youtube
 34.3.64.0/18#youtube
 213.180.193.0/24#youtube
-18.66.122.0/24#GPT
-3.210.159.207#GPT
-3.162.38.129#GPT
-18.245.175.129#GPT
-18.173.154.5#GPT
-134.0.118.88#GPT
-www.intel.com#"to VPN"
-13.249.141.0/24#Claude
-3.164.68.0/24#Claude
-108.157.229.0/24#Claude
-gemini.google.com#youtube
 95.182.120.241#youtube
-antigravity.google#youtube
 labs.google#youtube
-10.10.100.90#OF
-10.10.100.241-10.10.100.254#OF
-3.0.0.0/8#GPT
 lookerstudio.google.com#youtube
 142.251.1.198#youtube
 64.233.165.138#youtube
@@ -270,9 +240,7 @@ lookerstudio.google.com#youtube
 173.194.73.138#youtube
 173.194.221.119#youtube
 216.239.34.223#youtube
-173.194.221.138#youtube
 108.177.14.103#youtube
-grok.com#Grok
 172.217.21.174#youtube
 142.251.38.118#youtube
 172.217.20.161#youtube
@@ -282,19 +250,16 @@ grok.com#Grok
 142.250.150.101#youtube
 64.233.162.106#youtube
 216.58.207.206#youtube
-192.178.25.14#youtube
 142.251.143.150#youtube
 142.251.143.129#youtube
 216.239.32.223#youtube
 216.58.207.238#youtube
 172.217.19.228#youtube
-108.177.14.139#youtube
 108.177.14.101#youtube
 173.194.220.147#youtube
 172.253.130.198#youtube
 64.233.162.139#youtube
 142.251.1.119#youtube
-74.125.131.102#youtube
 64.233.164.198#youtube
 64.233.164.119#youtube
 172.253.130.113#youtube
@@ -304,6 +269,27 @@ grok.com#Grok
 216.239.36.223#youtube
 209.85.233.139#youtube
 64.233.163.103#youtube
+clamav.net#"to VPN"
+elevenlabs.io#"to VPN"
+challenges.cloudflare.com#"to VPN"
+cloudflare.com#"to VPN"
+googleusercontent.com#"to VPN"
+oogleapis.com#"to VPN"
+generativelanguage.googleapis.com#"to VPN"
+aistudio.google.com1#"to VPN"
+oauth2.googleapis.com#"to VPN"
+fonts.gstatic.com#"to VPN"
+www.gstatic.com#"to VPN"
+content-storage-upload.googleapis.com#"to VPN"
+cloud.google.com#"to VPN"
+lh3.googleusercontent.com#"to VPN"
+ssl.gstatic.com#"to VPN"
+www.intel.com#"to VPN"
+joxi.ru#"to VPN"
+13.249.141.0/24#Claude
+3.164.68.0/24#Claude
+108.157.229.0/24#Claude
+grok.com#Grok
 aistudio.google.com#Google
 ai.google.dev#Google
 accounts.google.com#Google
@@ -329,13 +315,6 @@ notebooklm.google#Google
 64.233.164.100#Google
 209.85.233.101#Google
 64.233.161.100#Google
-joxi.ru#"to VPN"
-marketplace.visualstudio.com#"VS Code"
-gallery.vsassets.io#"VS Code"
-vsassets.io#"VS Code"
-update.code.visualstudio.com#"VS Code"
-vscode.download.prss.microsoft.com#"VS Code"
-gallerycdn.vsassets.io#"VS Code"
 64.233.164.113#Google
 142.251.1.102#Google
 216.58.201.206#Google
@@ -343,11 +322,22 @@ gallerycdn.vsassets.io#"VS Code"
 64.233.163.138#Google
 31.13.72.174#Google
 57.144.222.34#Google
-icloud.com#apple
 74.125.205.100#Google
 142.251.20.139#Google
 172.217.20.174#Google
 192.178.25.14#Google
+108.177.14.138#Google
+173.194.222.101#Google
+216.58.201.174#Google
+108.177.14.139#Google
+64.233.161.113#Google
+marketplace.visualstudio.com#VS Code
+gallery.vsassets.io#VS Code
+vsassets.io#VS Code
+update.code.visualstudio.com#VS Code
+vscode.download.prss.microsoft.com#VS Code
+gallerycdn.vsassets.io#VS Code
+godexintl.com#VS Code
 telegram.org#Telegram
 api.telegram.org#Telegram
 web.telegram.org#Telegram
@@ -369,10 +359,6 @@ whatsapp.com#WhatsApp-Domains
 wa.me#WhatsApp-Domains
 api.whatsapp.com#WhatsApp-Domains
 whatsapp.net#WhatsApp-Domains
-108.177.14.138#Google
-173.194.222.101#Google
-godexintl.com#"VS Code"
-216.58.201.174#Google
 3.33.221.48#WhatsApp
 3.33.252.61#WhatsApp
 15.197.206.217#WhatsApp
@@ -602,5 +588,3 @@ godexintl.com#"VS Code"
 185.60.218.53#WhatsApp
 185.60.218.54#WhatsApp
 185.60.219.60/31#WhatsApp
-108.177.14.139#Google
-64.233.161.113#Google
