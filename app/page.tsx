@@ -1,4 +1,4 @@
-import RouteEditor from "@/components/route-editor";
+import RouteEditor from "@/components/route-editor-v2";
 
 export default function HomePage() {
   return (
@@ -6,7 +6,7 @@ export default function HomePage() {
       <div style={{ display: "flex", justifyContent: "space-between", gap: 16, alignItems: "center", marginBottom: 16 }}>
         <div>
           <h1>Smart Route Admin</h1>
-          <p>Edit groups, domains, and CIDR entries for smart-route-list.txt.</p>
+          <p>Load current groups from GitHub, preview changes, and then save the updated smart-route-list.txt.</p>
         </div>
 
         <form action="/api/logout" method="post">
