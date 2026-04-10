@@ -1,6 +1,14 @@
 import { generateSmartRouteList } from "@/lib/generator";
-import { getRepoFile, updateRepoFile } from "@/lib/github";
+import { decodeBase64, getRepoFile, updateRepoFile } from "@/lib/github";
 import { RoutesData } from "@/lib/types";
+
+function createBackupPath(originalPath: string) {
+  const backupDir = (process.env.BACKUP_DIR || "backups").replace(/\/+$/g, "");
+  const safeTimestamp = new Date().toISOString().replace(/[:.]/g, "-");
+  const fileName = originalPath.split("/").pop() || "smart-route-list.txt";
+
+  return `${backupDir}/${safeTimestamp}-${fileName}`;
+}
 
 export async function POST(req: Request) {
   const body = (await req.json()) as RoutesData;
@@ -12,6 +20,7 @@ export async function POST(req: Request) {
 
   let jsonSha: string | undefined;
   let txtSha: string | undefined;
+  let currentTxtContent: string | undefined;
 
   try {
     const file = await getRepoFile(jsonPath);
@@ -21,7 +30,16 @@ export async function POST(req: Request) {
   try {
     const file = await getRepoFile(txtPath);
     txtSha = file.sha;
+    currentTxtContent = decodeBase64(file.content);
   } catch {}
+
+  if (currentTxtContent) {
+    await updateRepoFile({
+      path: createBackupPath(txtPath),
+      content: currentTxtContent,
+      message: "Create backup of smart-route-list.txt before admin update"
+    });
+  }
 
   await updateRepoFile({
     path: jsonPath,
