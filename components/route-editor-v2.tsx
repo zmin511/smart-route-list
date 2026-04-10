@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { generateSmartRouteList } from "@/lib/generator";
-import { RouteItemType, RoutesData } from "@/lib/types";
+import { RoutesData } from "@/lib/types";
 
 function makeId() {
   return Math.random().toString(36).slice(2, 10);
@@ -10,10 +10,6 @@ function makeId() {
 
 function normalizeValue(value: string) {
   return value.trim().toLowerCase();
-}
-
-function detectType(value: string): RouteItemType {
-  return /^\d+\.\d+\.\d+\.\d+(\/\d+)?$/.test(value) ? "cidr" : "domain";
 }
 
 function parseBulkValues(input: string) {
@@ -31,7 +27,6 @@ export default function RouteEditorV2() {
   const [selectedGroupId, setSelectedGroupId] = useState("");
   const [bulkInput, setBulkInput] = useState("");
   const [newGroupName, setNewGroupName] = useState("");
-  const [bulkTypeMode, setBulkTypeMode] = useState<"auto" | RouteItemType>("auto");
 
   useEffect(() => {
     void loadRoutes();
@@ -45,7 +40,7 @@ export default function RouteEditorV2() {
     const json = await response.json().catch(() => ({}));
 
     if (!response.ok) {
-      setMessage(json.error || "Failed to load routes from GitHub");
+      setMessage(json.error || "Не удалось загрузить данные из GitHub");
       setLoading(false);
       return;
     }
@@ -64,13 +59,13 @@ export default function RouteEditorV2() {
     const name = newGroupName.trim();
 
     if (!name) {
-      setMessage("Enter a new group name");
+      setMessage("Введите название новой группы");
       return;
     }
 
     const exists = data.groups.some((group) => normalizeValue(group.name) === normalizeValue(name));
     if (exists) {
-      setMessage("A group with this name already exists");
+      setMessage("Группа с таким названием уже существует");
       return;
     }
 
@@ -81,7 +76,7 @@ export default function RouteEditorV2() {
     });
     setSelectedGroupId(group.id);
     setNewGroupName("");
-    setMessage(`Group "${name}" created`);
+    setMessage(`Группа "${name}" создана`);
   }
 
   const allExistingValues = new Set(
@@ -100,12 +95,12 @@ export default function RouteEditorV2() {
 
   function addBulkToGroup() {
     if (!selectedGroupId) {
-      setMessage("Select a group first");
+      setMessage("Сначала выберите группу");
       return;
     }
 
     if (uniqueBulkValues.length === 0) {
-      setMessage("Nothing new to add");
+      setMessage("Нет новых значений для добавления");
       return;
     }
 
@@ -118,7 +113,7 @@ export default function RouteEditorV2() {
       for (const value of uniqueBulkValues) {
         group.items.push({
           id: makeId(),
-          type: bulkTypeMode === "auto" ? detectType(value) : bulkTypeMode,
+          type: "domain",
           value
         });
       }
@@ -126,7 +121,7 @@ export default function RouteEditorV2() {
       return current;
     });
 
-    setMessage(`Added ${uniqueBulkValues.length} item(s)`);
+    setMessage(`Добавлено: ${uniqueBulkValues.length}`);
     setBulkInput("");
   }
 
@@ -143,12 +138,12 @@ export default function RouteEditorV2() {
     const json = await response.json().catch(() => ({}));
 
     if (!response.ok) {
-      setMessage(json.error || "Save failed");
+      setMessage(json.error || "Не удалось сохранить изменения");
       setSaving(false);
       return;
     }
 
-    setMessage("Saved to GitHub");
+    setMessage("Изменения сохранены в GitHub");
     setSaving(false);
   }
 
@@ -163,21 +158,22 @@ export default function RouteEditorV2() {
   }
 
   const preview = generateSmartRouteList(data);
+  const totalItems = data.groups.reduce((sum, group) => sum + group.items.length, 0);
 
   if (loading) {
-    return <div>Loading routes from GitHub...</div>;
+    return <div>Загрузка данных из GitHub...</div>;
   }
 
   return (
     <div style={{ display: "grid", gap: 20 }}>
       <section style={{ background: "#151b2f", padding: 16, borderRadius: 12, display: "grid", gap: 12 }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1.4fr 1fr auto", gap: 10 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "1.6fr auto", gap: 10 }}>
           <select
             value={selectedGroupId}
             onChange={(event) => setSelectedGroupId(event.target.value)}
             style={{ padding: 10, borderRadius: 10 }}
           >
-            <option value="">Select group</option>
+            <option value="">Выберите группу</option>
             {data.groups.map((group) => (
               <option key={group.id} value={group.id}>
                 {group.name} ({group.items.length})
@@ -185,44 +181,34 @@ export default function RouteEditorV2() {
             ))}
           </select>
 
-          <select
-            value={bulkTypeMode}
-            onChange={(event) => setBulkTypeMode(event.target.value as "auto" | RouteItemType)}
-            style={{ padding: 10, borderRadius: 10 }}
-          >
-            <option value="auto">Auto detect type</option>
-            <option value="domain">Domain</option>
-            <option value="cidr">CIDR / IP</option>
-          </select>
-
-          <button onClick={loadRoutes}>Reload from GitHub</button>
+          <button onClick={loadRoutes}>Обновить из GitHub</button>
         </div>
 
         <textarea
           value={bulkInput}
           onChange={(event) => setBulkInput(event.target.value)}
-          placeholder="Paste IPs, CIDR ranges, or domains. Separate by comma or new line."
+          placeholder="Вставьте IP-адреса, подсети или домены. Разделяйте запятой или с новой строки."
           style={{ minHeight: 110, width: "100%", padding: 12 }}
         />
 
         <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-          <button onClick={addBulkToGroup}>Add to selected group</button>
+          <button onClick={addBulkToGroup}>Добавить в выбранную группу</button>
           <input
             value={newGroupName}
             onChange={(event) => setNewGroupName(event.target.value)}
-            placeholder="New group name"
+            placeholder="Название новой группы"
             style={{ flex: 1, minWidth: 220, padding: 10, borderRadius: 10 }}
           />
-          <button onClick={addGroup}>Create group</button>
+          <button onClick={addGroup}>Создать группу</button>
         </div>
 
         <div style={{ color: "#b7c0d8", fontSize: 14 }}>
-          Ready to add: {uniqueBulkValues.length} | Duplicates skipped: {duplicateValues.length} | Groups loaded: {data.groups.length}
+          Загружено групп: {data.groups.length} | Всего записей: {totalItems} | Готово к добавлению: {uniqueBulkValues.length} | Дубликатов пропущено: {duplicateValues.length}
         </div>
 
         {duplicateValues.length > 0 ? (
           <div style={{ color: "#ffb86b", fontSize: 14 }}>
-            Duplicate values: {duplicateValues.join(", ")}
+            Дубликаты: {duplicateValues.join(", ")}
           </div>
         ) : null}
       </section>
@@ -251,7 +237,7 @@ export default function RouteEditorV2() {
                   setSelectedGroupId((current) => (current === group.id ? "" : current));
                 }}
               >
-                Delete group
+                Удалить группу
               </button>
             </div>
 
@@ -264,20 +250,6 @@ export default function RouteEditorV2() {
 
                 return (
                   <div key={item.id} style={{ display: "flex", gap: 8, marginBottom: 8 }}>
-                    <select
-                      value={item.type}
-                      onChange={(event) => {
-                        const value = event.target.value as RouteItemType;
-                        updateData((current) => {
-                          current.groups[groupIndex].items[itemIndex].type = value;
-                          return current;
-                        });
-                      }}
-                    >
-                      <option value="domain">domain</option>
-                      <option value="cidr">cidr</option>
-                    </select>
-
                     <input
                       value={item.value}
                       onChange={(event) => {
@@ -291,7 +263,7 @@ export default function RouteEditorV2() {
                     />
 
                     {duplicateCount > 1 ? (
-                      <div style={{ color: "#ffb86b", alignSelf: "center", minWidth: 90 }}>duplicate</div>
+                      <div style={{ color: "#ffb86b", alignSelf: "center", minWidth: 90 }}>дубликат</div>
                     ) : null}
 
                     <button
@@ -302,13 +274,13 @@ export default function RouteEditorV2() {
                         });
                       }}
                     >
-                      Delete
+                      Удалить
                     </button>
                   </div>
                 );
               })}
 
-              {group.items.length === 0 ? <div style={{ color: "#96a0bb" }}>Group is empty</div> : null}
+              {group.items.length === 0 ? <div style={{ color: "#96a0bb" }}>Группа пока пустая</div> : null}
             </div>
           </div>
         ))}
@@ -316,14 +288,19 @@ export default function RouteEditorV2() {
 
       <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
         <button onClick={save} disabled={saving}>
-          {saving ? "Saving..." : "Save to GitHub"}
+          {saving ? "Сохраняю..." : "Сохранить в GitHub"}
         </button>
-        <button onClick={downloadPreview}>Download preview as file</button>
+        <button onClick={downloadPreview}>Скачать результат в файл</button>
       </div>
 
       {message ? <div>{message}</div> : null}
 
-      <textarea readOnly value={preview} style={{ minHeight: 320, width: "100%", padding: 12 }} />
+      <textarea
+        readOnly
+        value={preview}
+        placeholder="Здесь будет итоговый smart-route-list.txt"
+        style={{ minHeight: 320, width: "100%", padding: 12 }}
+      />
     </div>
   );
 }

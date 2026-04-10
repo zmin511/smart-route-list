@@ -1,13 +1,21 @@
 const API = "https://api.github.com";
 
-const owner = process.env.GITHUB_OWNER!;
-const repo = process.env.GITHUB_REPO!;
-const branch = process.env.GITHUB_BRANCH!;
-const token = process.env.GITHUB_TOKEN!;
+const owner = process.env.GITHUB_OWNER || "zmin511";
+const repo = process.env.GITHUB_REPO || "smart-route-list";
+const branch = process.env.GITHUB_BRANCH || "main";
+const token = process.env.GITHUB_TOKEN;
+
+function requireToken() {
+  if (!token) {
+    throw new Error("Missing GITHUB_TOKEN");
+  }
+
+  return token;
+}
 
 function headers() {
   return {
-    Authorization: `Bearer ${token}`,
+    Authorization: `Bearer ${requireToken()}`,
     Accept: "application/vnd.github+json",
     "Content-Type": "application/json"
   };
@@ -20,7 +28,8 @@ export async function getRepoFile(path: string) {
   });
 
   if (!response.ok) {
-    throw new Error(`GitHub read failed: ${response.status}`);
+    const text = await response.text();
+    throw new Error(`GitHub read failed: ${response.status} ${text}`);
   }
 
   return response.json();
