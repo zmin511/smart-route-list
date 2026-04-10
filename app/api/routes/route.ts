@@ -1,14 +1,7 @@
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth";
 import { decodeBase64, getRepoFile } from "@/lib/github";
 import { parseSmartRouteList } from "@/lib/parser";
 
 export async function GET() {
-  const session = await getServerSession(authOptions);
-  if (!session) {
-    return Response.json({ error: "Unauthorized" }, { status: 401 });
-  }
-
   const jsonPath = process.env.ROUTES_JSON_PATH || "routes.json";
   const txtPath = process.env.ROUTES_TXT_PATH || "smart-route-list.txt";
 
@@ -21,4 +14,4 @@ export async function GET() {
     const txt = decodeBase64(txtFile.content);
     return Response.json({ data: parseSmartRouteList(txt) });
   }
-} 
+}

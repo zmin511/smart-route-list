@@ -1,15 +1,8 @@
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth";
 import { generateSmartRouteList } from "@/lib/generator";
 import { getRepoFile, updateRepoFile } from "@/lib/github";
 import { RoutesData } from "@/lib/types";
 
 export async function POST(req: Request) {
-  const session = await getServerSession(authOptions);
-  if (!session) {
-    return Response.json({ error: "Unauthorized" }, { status: 401 });
-  }
-
   const body = (await req.json()) as RoutesData;
   const jsonPath = process.env.ROUTES_JSON_PATH || "routes.json";
   const txtPath = process.env.ROUTES_TXT_PATH || "smart-route-list.txt";

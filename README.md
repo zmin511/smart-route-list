@@ -1,37 +1,40 @@
 # Smart Route List Admin
 
-Админка для редактирования `smart-route-list.txt` прямо в том же GitHub-репозитории, который уже использует primary node.
+Admin UI for editing `smart-route-list.txt` directly in the same GitHub repository used by the primary node.
 
-## Что лежит в корне
+## Project layout
 
-- `routes.json` — удобный исходник для редактирования
-- `smart-route-list.txt` — итоговый файл для primary node
-- `app/`, `components/`, `lib/` — Next.js приложение для Vercel
+- `routes.json` - editable source data
+- `smart-route-list.txt` - generated output used by the primary node
+- `app/`, `components/`, `lib/` - Next.js app for Vercel
 
-## Как это работает
+## How it works
 
-1. Vercel поднимает Next.js приложение из этого же репозитория.
-2. Ты логинишься через GitHub.
-3. Админка читает `routes.json`.
-4. После редактирования админка обновляет:
+1. Vercel deploys the Next.js app from this repository.
+2. You sign in with the admin username and password from environment variables.
+3. The admin UI reads `routes.json`.
+4. After editing, the admin UI updates:
    - `routes.json`
    - `smart-route-list.txt`
-5. Primary node продолжает забирать `smart-route-list.txt` из корня репозитория.
+5. The primary node continues reading `smart-route-list.txt` from the repository root.
 
-## Переменные окружения
+## Environment variables
 
-Смотри `.env.example`.
+See `.env.example`.
 
-Главные значения:
+Required values:
 
+- `ADMIN_USERNAME`
+- `ADMIN_PASSWORD`
+- `AUTH_SECRET`
+- `GITHUB_TOKEN`
 - `GITHUB_OWNER=zmin511`
 - `GITHUB_REPO=smart-route-list`
 - `GITHUB_BRANCH=main`
-- `ALLOWED_GITHUB_USER=zmin511`
 - `ROUTES_JSON_PATH=routes.json`
 - `ROUTES_TXT_PATH=smart-route-list.txt`
 
-## Локальный запуск
+## Local development
 
 ```bash
 npm install
@@ -39,6 +42,6 @@ cp .env.example .env.local
 npm run dev
 ```
 
-## Деплой
+## Deployment
 
-Подключи этот репозиторий к Vercel и добавь environment variables из `.env.example`.
+Connect this repository to Vercel and add the environment variables from `.env.example`.

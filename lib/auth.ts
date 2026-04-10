@@ -1,42 +1,83 @@
-import type { NextAuthOptions } from "next-auth";
-import GitHubProvider from "next-auth/providers/github";
+const encoder = new TextEncoder();
 
-const githubClientId = process.env.GITHUB_CLIENT_ID;
-const githubClientSecret = process.env.GITHUB_CLIENT_SECRET;
+export const AUTH_COOKIE_NAME = "smart_route_auth";
+const AUTH_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;
 
-if (!githubClientId || !githubClientSecret) {
-  throw new Error("Missing GITHUB_CLIENT_ID or GITHUB_CLIENT_SECRET");
+function requireEnv(name: "ADMIN_USERNAME" | "ADMIN_PASSWORD" | "AUTH_SECRET") {
+  const value = process.env[name]?.trim();
+
+  if (!value) {
+    throw new Error(`Missing ${name}`);
+  }
+
+  return value;
 }
 
-export const authOptions: NextAuthOptions = {
-  providers: [
-    GitHubProvider({
-      clientId: githubClientId,
-      clientSecret: githubClientSecret,
-    }),
-  ],
-  callbacks: {
-    async signIn({ profile }) {
-      const allowed = process.env.ALLOWED_GITHUB_USER?.trim().toLowerCase();
-      const login = (profile as { login?: string } | null)?.login?.trim().toLowerCase();
+function toBase64Url(buffer: ArrayBuffer) {
+  const bytes = new Uint8Array(buffer);
+  const binary = Array.from(bytes, (byte) => String.fromCharCode(byte)).join("");
 
-      if (!allowed) return false;
-      return login === allowed;
-    },
-    async jwt({ token, profile }) {
-      if (profile) {
-        token.login = (profile as { login?: string }).login;
-      }
-      return token;
-    },
-    async session({ session, token }) {
-      if (session.user) {
-        (session.user as { login?: string }).login = token.login as string | undefined;
-      }
-      return session;
-    },
-  },
-  session: {
-    strategy: "jwt",
-  },
-};
+  return btoa(binary)
+    .replace(/\+/g, "-")
+    .replace(/\//g, "_")
+    .replace(/=+$/g, "");
+}
+
+async function signValue(value: string, secret: string) {
+  const key = await crypto.subtle.importKey(
+    "raw",
+    encoder.encode(secret),
+    { name: "HMAC", hash: "SHA-256" },
+    false,
+    ["sign"]
+  );
+
+  const signature = await crypto.subtle.sign("HMAC", key, encoder.encode(value));
+  return toBase64Url(signature);
+}
+
+export function getAdminCredentials() {
+  return {
+    username: requireEnv("ADMIN_USERNAME"),
+    password: requireEnv("ADMIN_PASSWORD"),
+    secret: requireEnv("AUTH_SECRET")
+  };
+}
+
+export function getAuthCookieMaxAge() {
+  return AUTH_COOKIE_MAX_AGE;
+}
+
+export async function createAuthCookieValue(username: string) {
+  const { secret } = getAdminCredentials();
+  const payload = `${username}:${Date.now()}`;
+  const signature = await signValue(payload, secret);
+  return `${payload}.${signature}`;
+}
+
+export async function verifyAuthCookieValue(cookieValue?: string | null) {
+  if (!cookieValue) {
+    return false;
+  }
+
+  const dotIndex = cookieValue.lastIndexOf(".");
+  if (dotIndex <= 0) {
+    return false;
+  }
+
+  const payload = cookieValue.slice(0, dotIndex);
+  const signature = cookieValue.slice(dotIndex + 1);
+  const [username] = payload.split(":");
+
+  if (!username) {
+    return false;
+  }
+
+  const credentials = getAdminCredentials();
+  if (username !== credentials.username) {
+    return false;
+  }
+
+  const expectedSignature = await signValue(payload, credentials.secret);
+  return signature === expectedSignature;
+}
