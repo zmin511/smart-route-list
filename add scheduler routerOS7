@@ -1,0 +1,4 @@
+/system scheduler
+add name=github-address-list-import-01h start-time=01:00:00 interval=1d \
+    policy=read,write,test,policy,ftp \
+    on-event="/system script run github-address-list-import"
