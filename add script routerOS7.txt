@@ -1,0 +1,85 @@
+/system script
+add name=github-address-list-import policy=read,write,test,policy,ftp source={
+    :local url "https://raw.githubusercontent.com/zmin511/smart-route-list/main/smart-route-list.txt"
+    :local added 0
+    :local skipped 0
+    :local bad 0
+
+    :log info "github-address-list-import: start"
+
+    :do {
+        :local result [/tool fetch url=$url http-method=get output=user as-value]
+        :local data ($result->"data")
+
+        :if ([:len $data] = 0) do={
+            :log warning "github-address-list-import: empty response"
+            :error "empty response"
+        }
+
+        :local pos 0
+        :local totalLen [:len $data]
+
+        :while ($pos < $totalLen) do={
+            :local eol [:find $data "\n" $pos]
+            :if ($eol = nil) do={ :set eol $totalLen }
+
+            :local line [:pick $data $pos $eol]
+            :set pos ($eol + 1)
+
+            :if ([:len $line] > 0) do={
+                :if ([:pick $line ([:len $line] - 1) [:len $line]] = "\r") do={
+                    :set line [:pick $line 0 ([:len $line] - 1)]
+                }
+            }
+
+            :if ([:len $line] = 0) do={ :set skipped ($skipped + 1); :continue }
+
+            :local firstChar [:pick $line 0 1]
+            :if (($firstChar = "#") || ($firstChar = ";")) do={
+                :set skipped ($skipped + 1)
+                :continue
+            }
+
+            :local delim [:find $line "#"]
+            :if ($delim = nil) do={
+                :set bad ($bad + 1)
+                :log warning ("github-address-list-import: bad line without #: " . $line)
+                :continue
+            }
+
+            :local addr [:pick $line 0 $delim]
+            :local listName [:pick $line ($delim + 1) [:len $line]]
+
+            :if (([:len $addr] = 0) || ([:len $listName] = 0)) do={
+                :set bad ($bad + 1)
+                :log warning ("github-address-list-import: bad line with empty addr/list: " . $line)
+                :continue
+            }
+
+            :if ([:pick $listName 0 1] = "\"") do={
+                :set listName [:pick $listName 1 [:len $listName]]
+            }
+            :if (([:len $listName] > 0) && ([:pick $listName ([:len $listName] - 1) [:len $listName]] = "\"")) do={
+                :set listName [:pick $listName 0 ([:len $listName] - 1)]
+            }
+
+            :local exists [/ip firewall address-list find where list=$listName and address=$addr]
+
+            :if ([:len $exists] = 0) do={
+                :do {
+                    /ip firewall address-list add list=$listName address=$addr comment="imported-from-github"
+                    :set added ($added + 1)
+                } on-error={
+                    :set bad ($bad + 1)
+                    :log warning ("github-address-list-import: failed to add " . $addr . " -> " . $listName)
+                }
+            } else={
+                :set skipped ($skipped + 1)
+            }
+        }
+
+        :log info ("github-address-list-import: done, added=" . $added . ", skipped=" . $skipped . ", bad=" . $bad)
+    } on-error={
+        :log error "github-address-list-import: fetch/parse failed"
+    }
+}
