@@ -287,11 +287,6 @@
           "value": "142.250.150.0/24"
         },
         {
-          "id": "8ak8fc0p",
-          "type": "cidr",
-          "value": "108.177.14.0/24"
-        },
-        {
           "id": "snsklc0f",
           "type": "cidr",
           "value": "23.102.140.112/28"
@@ -380,11 +375,6 @@
           "id": "rxa4fdac",
           "type": "domain",
           "value": "openai.com"
-        },
-        {
-          "id": "yh5axwij",
-          "type": "cidr",
-          "value": "18.173.154.0/24"
         },
         {
           "id": "cu0ym4q9",
@@ -759,11 +749,6 @@
           "id": "1qzillac",
           "type": "cidr",
           "value": "108.170.0.0/16"
-        },
-        {
-          "id": "s09j80ta",
-          "type": "cidr",
-          "value": "108.177.0.0/16"
         },
         {
           "id": "z0vh8fj1",
