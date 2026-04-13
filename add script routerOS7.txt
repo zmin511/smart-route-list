@@ -1,30 +1,41 @@
-/system script
-add name=github-smart-route-list-sync policy=read,write,test,policy,ftp source={
+/system script set [find name="github-smart-route-list-sync"] source={
     :local url "https://raw.githubusercontent.com/zmin511/smart-route-list/main/smart-route-list.txt"
     :local targetList "smart-route-list"
 
     :local added 0
     :local updated 0
-    :local enabled 0
-    :local disabled 0
-    :local bad 0
+    :local reenabled 0
+    :local cntDisabled 0
+    :local cntDisableErrors 0
     :local skipped 0
+    :local bad 0
+    :local skippedExisting 0
 
     :log info ("github-smart-route-list-sync: start, list=" . $targetList)
 
-    :do {
-        /ip firewall address-list set [find where list=$targetList] disabled=yes
-        :set disabled [:len [/ip firewall address-list find where list=$targetList]]
-    } on-error={
-        :log warning ("github-smart-route-list-sync: failed to disable existing entries for list=" . $targetList)
+    :log info ("github-smart-route-list-sync: disabling current static entries in " . $targetList)
+
+    :foreach i in=[/ip firewall address-list find where list=$targetList and dynamic=no] do={
+        :do {
+            :local curDisabled [/ip firewall address-list get $i disabled]
+            :if ($curDisabled = no) do={
+                /ip firewall address-list set $i disabled=yes
+                :set cntDisabled ($cntDisabled + 1)
+            }
+        } on-error={
+            :set cntDisableErrors ($cntDisableErrors + 1)
+            :log warning ("github-smart-route-list-sync: failed to disable item " . $i)
+        }
     }
+
+    :log info ("github-smart-route-list-sync: disable stage finished, disabled=" . $cntDisabled . ", errors=" . $cntDisableErrors)
 
     :do {
         :local result [/tool fetch url=$url http-method=get output=user as-value]
         :local data ($result->"data")
 
         :if ([:len $data] = 0) do={
-            :log warning "github-smart-route-list-sync: empty response"
+            :log error "github-smart-route-list-sync: empty response"
             :error "empty response"
         }
 
@@ -65,45 +76,77 @@ add name=github-smart-route-list-sync policy=read,write,test,policy,ftp source={
             :local addr [:pick $line 0 $delim]
             :local commentText [:pick $line ($delim + 1) [:len $line]]
 
-            :if (([:len $addr] = 0) || ([:len $commentText] = 0)) do={
-                :set bad ($bad + 1)
-                :log warning ("github-smart-route-list-sync: bad line with empty addr/comment: " . $line)
-                :continue
+            :while (([:len $addr] > 0) and ([:pick $addr 0 1] = " ")) do={
+                :set addr [:pick $addr 1 [:len $addr]]
+            }
+            :while (([:len $addr] > 0) and ([:pick $addr ([:len $addr] - 1) [:len $addr]] = " ")) do={
+                :set addr [:pick $addr 0 ([:len $addr] - 1)]
             }
 
-            :if ([:pick $commentText 0 1] = "\"") do={
+            :while (([:len $commentText] > 0) and ([:pick $commentText 0 1] = " ")) do={
                 :set commentText [:pick $commentText 1 [:len $commentText]]
             }
-            :if (([:len $commentText] > 0) && ([:pick $commentText ([:len $commentText] - 1) [:len $commentText]] = "\"")) do={
+            :while (([:len $commentText] > 0) and ([:pick $commentText ([:len $commentText] - 1) [:len $commentText]] = " ")) do={
                 :set commentText [:pick $commentText 0 ([:len $commentText] - 1)]
             }
 
-            :local existing [/ip firewall address-list find where list=$targetList and address=$addr]
+            :if (([:len $commentText] > 0) and ([:pick $commentText 0 1] = "\"")) do={
+                :set commentText [:pick $commentText 1 [:len $commentText]]
+            }
+            :if (([:len $commentText] > 0) and ([:pick $commentText ([:len $commentText] - 1) [:len $commentText]] = "\"")) do={
+                :set commentText [:pick $commentText 0 ([:len $commentText] - 1)]
+            }
 
-            :if ([:len $existing] = 0) do={
-                :do {
-                    /ip firewall address-list add list=$targetList address=$addr comment=$commentText disabled=no
-                    :set added ($added + 1)
-                } on-error={
-                    :set bad ($bad + 1)
-                    :log warning ("github-smart-route-list-sync: failed to add " . $addr)
+            :if (([:len $addr] = 0) || ([:len $commentText] = 0)) do={
+                :set bad ($bad + 1)
+                :log warning ("github-smart-route-list-sync: bad line after trim: " . $line)
+                :continue
+            }
+
+            :local staticFound 0
+            :local anyFound 0
+
+            :set anyFound [:len [/ip firewall address-list find where list=$targetList and address=$addr]]
+            :local existingStatic [/ip firewall address-list find where list=$targetList and address=$addr and dynamic=no]
+
+            :if ([:len $existingStatic] > 0) do={
+                :foreach item in=$existingStatic do={
+                    :do {
+                        /ip firewall address-list set $item comment=$commentText disabled=no
+                        :set updated ($updated + 1)
+                        :set staticFound 1
+                    } on-error={
+                        :set bad ($bad + 1)
+                        :log warning ("github-smart-route-list-sync: failed to update static item for line: " . $line)
+                    }
                 }
-            } else={
-                :do {
-                    /ip firewall address-list set $existing comment=$commentText disabled=no
-                    :set updated ($updated + 1)
-                    :set enabled ($enabled + 1)
-                } on-error={
-                    :set bad ($bad + 1)
-                    :log warning ("github-smart-route-list-sync: failed to update/enable " . $addr)
-                }
+            }
+
+            :if ($staticFound = 1) do={
+                :continue
+            }
+
+            :if ($anyFound > 0) do={
+                :set skippedExisting ($skippedExisting + 1)
+                :log warning ("github-smart-route-list-sync: skipped because entry already exists as dynamic or conflicting item: " . $line)
+                :continue
+            }
+
+            :do {
+                /ip firewall address-list add list=$targetList address=$addr comment=$commentText disabled=no
+                :set added ($added + 1)
+            } on-error={
+                :set bad ($bad + 1)
+                :log warning ("github-smart-route-list-sync: failed on line: " . $line)
             }
         }
 
-        :log info ("github-smart-route-list-sync: done, list=" . $targetList . ", disabled_before=" . $disabled . ", added=" . $added . ", updated=" . $updated . ", enabled=" . $enabled . ", skipped=" . $skipped . ", bad=" . $bad)
+        :log info ("github-smart-route-list-sync: done, list=" . $targetList . ", disabled=" . $cntDisabled . ", disableErrors=" . $cntDisableErrors . ", added=" . $added . ", updated=" . $updated . ", skippedExisting=" . $skippedExisting . ", skipped=" . $skipped . ", bad=" . $bad)
+
     } on-error={
         :log error "github-smart-route-list-sync: fetch/parse failed"
     }
+}
 }
 /system scheduler
 add name=github-smart-route-list-sync-01h start-time=01:00:00 interval=1d \
