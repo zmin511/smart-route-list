@@ -1,0 +1,39 @@
+:root {
+  color-scheme: dark;
+  --bg: #07111f;
+  --panel: rgba(14, 24, 41, 0.9);
+  --panel-soft: rgba(13, 23, 38, 0.7);
+  --border: rgba(118, 164, 209, 0.18);
+  --border-strong: rgba(92, 214, 185, 0.34);
+  --text: #ecf4ff;
+  --text-muted: #9ab0c9;
+  --text-dim: #6f88a7;
+  --danger: #ff7d7d;
+  --warning: #ffc46b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background:
+    radial-gradient(circle at top left, rgba(42, 195, 255, 0.14), transparent 30%),
+    radial-gradient(circle at top right, rgba(63, 215, 196, 0.12), transparent 28%),
+    linear-gradient(180deg, #08101c 0%, #050b14 100%);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--text);
+  font-family: "Segoe UI", "Trebuchet MS", sans-serif;
+  background: transparent;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
