@@ -1,8 +1,8 @@
-"use client";
+﻿"use client";
 
 import { CSSProperties, ReactNode, useEffect, useMemo, useState } from "react";
 import { generateSmartRouteList } from "@/lib/generator";
-import { RouteItem, RouteItemType, RoutesData } from "@/lib/types";
+import { RouteItem, RoutesData } from "@/lib/types";
 
 function makeId() {
   return Math.random().toString(36).slice(2, 10);
@@ -72,7 +72,7 @@ function cidrContains(cidrValue: string, candidateValue: string) {
   return (ip & cidr.maskBits) === cidr.network;
 }
 
-function inferType(value: string): RouteItemType {
+function inferType(value: string) {
   return /^(?:\d{1,3}\.){3}\d{1,3}(?:\/\d{1,2})?$/.test(value) ? "cidr" : "domain";
 }
 
@@ -81,19 +81,26 @@ function itemKind(item: RouteItem) {
   return item.value.includes("/") ? "Подсеть" : "IP";
 }
 
-function summarizeIssues(data: RoutesData) {
+type Analysis = {
+  exactDuplicates: Set<string>;
+  overlapItems: Set<string>;
+  explanations: Map<string, string[]>;
+};
+
+function analyzeItems(data: RoutesData): Analysis {
   const exactDuplicates = new Set<string>();
   const overlapItems = new Set<string>();
-  const labels = new Map<string, string[]>();
+  const explanations = new Map<string, string[]>();
   const seen = new Map<string, string[]>();
 
   for (const group of data.groups) {
     for (const item of group.items) {
       const value = normalizeValue(item.value);
       if (!value) continue;
-      const existing = seen.get(value) ?? [];
-      existing.push(item.id);
-      seen.set(value, existing);
+
+      const ids = seen.get(value) ?? [];
+      ids.push(item.id);
+      seen.set(value, ids);
     }
   }
 
@@ -118,25 +125,19 @@ function summarizeIssues(data: RoutesData) {
         overlapItems.add(parent.item.id);
         overlapItems.add(candidate.id);
 
-        const childText = `Входит в ${parent.item.value} из группы «${parent.groupName}»`;
-        const parentText = `Содержит ${candidate.value} из группы «${group.name || "Без названия"}»`;
+        const childText = `${candidate.value} уже входит в ${parent.item.value} из группы «${parent.groupName}». Эту запись можно удалить, если отдельное правило не нужно.`;
+        const parentText = `${parent.item.value} уже покрывает ${candidate.value} из группы «${group.name || "Без названия"}».`;
 
-        labels.set(candidate.id, [...(labels.get(candidate.id) ?? []), childText]);
-        labels.set(parent.item.id, [...(labels.get(parent.item.id) ?? []), parentText]);
+        explanations.set(candidate.id, [...(explanations.get(candidate.id) ?? []), childText]);
+        explanations.set(parent.item.id, [...(explanations.get(parent.item.id) ?? []), parentText]);
       }
     }
   }
 
-  return { exactDuplicates, overlapItems, labels };
+  return { exactDuplicates, overlapItems, explanations };
 }
 
-function Badge({
-  children,
-  tone = "default"
-}: {
-  children: ReactNode;
-  tone?: "default" | "warning" | "danger";
-}) {
+function Badge({ children, tone = "default" }: { children: ReactNode; tone?: "default" | "warning" | "danger" }) {
   const styles: Record<string, CSSProperties> = {
     default: {
       borderColor: "rgba(118, 164, 209, 0.18)",
@@ -161,11 +162,11 @@ function Badge({
         ...styles[tone],
         display: "inline-flex",
         alignItems: "center",
-        minHeight: 28,
-        padding: "4px 10px",
+        minHeight: 24,
+        padding: "3px 9px",
         borderRadius: 999,
         border: "1px solid",
-        fontSize: 12.5,
+        fontSize: 11.5,
         whiteSpace: "nowrap"
       }}
     >
@@ -176,17 +177,18 @@ function Badge({
 
 const fieldStyle: CSSProperties = {
   width: "100%",
-  borderRadius: 16,
+  borderRadius: 12,
   border: "1px solid var(--border)",
   background: "rgba(7, 14, 24, 0.92)",
   color: "var(--text)",
-  padding: "14px 16px",
-  outline: "none"
+  padding: "11px 13px",
+  outline: "none",
+  fontSize: 14
 };
 
 const labelStyle: CSSProperties = {
   color: "var(--text-muted)",
-  fontSize: 13,
+  fontSize: 11.5,
   textTransform: "uppercase",
   letterSpacing: "0.08em"
 };
@@ -194,41 +196,44 @@ const labelStyle: CSSProperties = {
 const panelStyle: CSSProperties = {
   background: "var(--panel)",
   border: "1px solid var(--border)",
-  borderRadius: 28,
-  padding: 22,
-  boxShadow: "0 24px 60px rgba(0, 0, 0, 0.35)"
+  borderRadius: 20,
+  padding: 18,
+  boxShadow: "0 18px 40px rgba(0, 0, 0, 0.28)"
 };
 
 function buttonStyle(kind: "primary" | "ghost" | "danger"): CSSProperties {
   if (kind === "primary") {
     return {
-      borderRadius: 16,
+      borderRadius: 12,
       border: "1px solid rgba(63, 215, 196, 0.35)",
       background: "linear-gradient(135deg, rgba(22, 121, 112, 0.95), rgba(14, 75, 88, 0.95))",
       color: "#effffe",
-      padding: "13px 16px",
-      cursor: "pointer"
+      padding: "10px 14px",
+      cursor: "pointer",
+      fontSize: 14
     };
   }
 
   if (kind === "danger") {
     return {
-      borderRadius: 16,
+      borderRadius: 12,
       border: "1px solid rgba(255, 125, 125, 0.28)",
       background: "rgba(56, 18, 23, 0.78)",
       color: "#ffd3d3",
-      padding: "13px 16px",
-      cursor: "pointer"
+      padding: "10px 14px",
+      cursor: "pointer",
+      fontSize: 14
     };
   }
 
   return {
-    borderRadius: 16,
+    borderRadius: 12,
     border: "1px solid var(--border)",
     background: "rgba(12, 20, 35, 0.82)",
     color: "var(--text)",
-    padding: "13px 16px",
-    cursor: "pointer"
+    padding: "10px 14px",
+    cursor: "pointer",
+    fontSize: 14
   };
 }
 
@@ -262,8 +267,8 @@ export default function RouteEditorV2() {
     const loadedData = (json.data || { groups: [] }) as RoutesData;
     setData(loadedData);
     setExpanded(
-      loadedData.groups.reduce<Record<string, boolean>>((acc, group, index) => {
-        acc[group.id] = index < 4;
+      loadedData.groups.reduce<Record<string, boolean>>((acc, group) => {
+        acc[group.id] = false;
         return acc;
       }, {})
     );
@@ -291,8 +296,7 @@ export default function RouteEditorV2() {
   }
 
   const preview = useMemo(() => generateSmartRouteList(data), [data]);
-  const issues = useMemo(() => summarizeIssues(data), [data]);
-
+  const analysis = useMemo(() => analyzeItems(data), [data]);
   const selectedGroup = useMemo(
     () => data.groups.find((group) => group.id === selectedGroupId) ?? null,
     [data.groups, selectedGroupId]
@@ -342,17 +346,17 @@ export default function RouteEditorV2() {
       { label: "Домены", value: domains, tone: "default" },
       { label: "Новых к добавлению", value: uniqueBulkValues.length, tone: "accent" },
       {
-        label: "Точные дубли",
-        value: issues.exactDuplicates.size + duplicateValues.length,
-        tone: issues.exactDuplicates.size + duplicateValues.length ? "danger" : "accent"
+        label: "Дубли",
+        value: analysis.exactDuplicates.size + duplicateValues.length,
+        tone: analysis.exactDuplicates.size + duplicateValues.length ? "danger" : "accent"
       },
       {
         label: "Пересечения",
-        value: issues.overlapItems.size,
-        tone: issues.overlapItems.size ? "warning" : "accent"
+        value: analysis.overlapItems.size,
+        tone: analysis.overlapItems.size ? "warning" : "accent"
       }
     ] as const;
-  }, [data.groups, duplicateValues.length, issues.exactDuplicates.size, issues.overlapItems.size, uniqueBulkValues.length]);
+  }, [analysis.exactDuplicates.size, analysis.overlapItems.size, data.groups, duplicateValues.length, uniqueBulkValues.length]);
 
   function addGroup() {
     const name = newGroupName.trim();
@@ -375,7 +379,7 @@ export default function RouteEditorV2() {
       current.groups.push(group);
       return current;
     });
-    setExpanded((current) => ({ ...current, [group.id]: true }));
+    setExpanded((current) => ({ ...current, [group.id]: false }));
     setSelectedGroupId(group.id);
     setNewGroupName("");
     setMessageTone("success");
@@ -397,9 +401,7 @@ export default function RouteEditorV2() {
 
     updateData((current) => {
       const group = current.groups.find((item) => item.id === selectedGroupId);
-      if (!group) {
-        return current;
-      }
+      if (!group) return current;
 
       for (const value of uniqueBulkValues) {
         group.items.unshift({
@@ -453,12 +455,12 @@ export default function RouteEditorV2() {
   }
 
   if (loading) {
-    return <div style={{ padding: "48px 0", color: "var(--text-muted)" }}>Загрузка данных из GitHub...</div>;
+    return <div style={{ padding: "36px 0", color: "var(--text-muted)", fontSize: 14 }}>Загрузка данных из GitHub...</div>;
   }
 
   return (
-    <div style={{ display: "grid", gap: 24, marginTop: 28 }}>
-      <section style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 14 }}>
+    <div style={{ display: "grid", gap: 18, marginTop: 22 }}>
+      <section style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: 10 }}>
         {stats.map((card) => (
           <article
             key={card.label}
@@ -466,26 +468,26 @@ export default function RouteEditorV2() {
               border: "1px solid",
               borderColor:
                 card.tone === "danger"
-                  ? "rgba(255, 125, 125, 0.3)"
+                  ? "rgba(255, 125, 125, 0.28)"
                   : card.tone === "warning"
-                    ? "rgba(255, 196, 107, 0.3)"
+                    ? "rgba(255, 196, 107, 0.28)"
                     : card.tone === "accent"
-                      ? "rgba(63, 215, 196, 0.3)"
+                      ? "rgba(63, 215, 196, 0.28)"
                       : "rgba(122, 155, 190, 0.18)",
               background:
                 card.tone === "danger"
-                  ? "linear-gradient(180deg, rgba(54, 18, 24, 0.82), rgba(23, 10, 13, 0.9))"
+                  ? "linear-gradient(180deg, rgba(54, 18, 24, 0.78), rgba(23, 10, 13, 0.88))"
                   : card.tone === "warning"
-                    ? "linear-gradient(180deg, rgba(52, 34, 13, 0.82), rgba(24, 18, 10, 0.9))"
+                    ? "linear-gradient(180deg, rgba(52, 34, 13, 0.78), rgba(24, 18, 10, 0.88))"
                     : card.tone === "accent"
-                      ? "linear-gradient(180deg, rgba(10, 45, 52, 0.84), rgba(9, 25, 34, 0.9))"
-                      : "linear-gradient(180deg, rgba(16, 27, 44, 0.92), rgba(10, 18, 31, 0.86))",
-              borderRadius: 22,
-              padding: "18px 20px"
+                      ? "linear-gradient(180deg, rgba(10, 45, 52, 0.78), rgba(9, 25, 34, 0.88))"
+                      : "linear-gradient(180deg, rgba(16, 27, 44, 0.9), rgba(10, 18, 31, 0.84))",
+              borderRadius: 14,
+              padding: "14px 15px"
             }}
           >
-            <div style={{ color: "var(--text-muted)", fontSize: 14, marginBottom: 10 }}>{card.label}</div>
-            <div style={{ fontSize: 34, fontWeight: 700, letterSpacing: "-0.04em" }}>{card.value}</div>
+            <div style={{ color: "var(--text-muted)", fontSize: 12, marginBottom: 8 }}>{card.label}</div>
+            <div style={{ fontSize: 28, fontWeight: 700, letterSpacing: "-0.04em", lineHeight: 1 }}>{card.value}</div>
           </article>
         ))}
       </section>
@@ -493,10 +495,10 @@ export default function RouteEditorV2() {
       <section
         style={{
           display: "flex",
-          gap: 12,
+          gap: 10,
           flexWrap: "wrap",
-          padding: 16,
-          borderRadius: 24,
+          padding: 12,
+          borderRadius: 16,
           border: "1px solid var(--border)",
           background: "var(--panel-soft)"
         }}
@@ -508,18 +510,18 @@ export default function RouteEditorV2() {
               key={group.id}
               onClick={() => setSelectedGroupId(group.id)}
               style={{
-                minWidth: 150,
+                minWidth: 132,
                 textAlign: "left",
                 cursor: "pointer",
-                borderRadius: 16,
-                border: active ? "1px solid rgba(63, 215, 196, 0.5)" : "1px solid var(--border)",
-                background: active ? "rgba(13, 61, 61, 0.58)" : "rgba(13, 21, 35, 0.78)",
+                borderRadius: 12,
+                border: active ? "1px solid rgba(63, 215, 196, 0.45)" : "1px solid var(--border)",
+                background: active ? "rgba(13, 61, 61, 0.48)" : "rgba(13, 21, 35, 0.72)",
                 color: "var(--text)",
-                padding: "12px 16px"
+                padding: "10px 12px"
               }}
             >
-              <div style={{ fontWeight: 700 }}>{group.name || "Без названия"}</div>
-              <div style={{ marginTop: 6, color: "var(--text-muted)", fontSize: 13 }}>{group.items.length} записей</div>
+              <div style={{ fontWeight: 700, fontSize: 13.5 }}>{group.name || "Без названия"}</div>
+              <div style={{ marginTop: 5, color: "var(--text-muted)", fontSize: 11.5 }}>{group.items.length} записей</div>
             </button>
           );
         })}
@@ -528,24 +530,24 @@ export default function RouteEditorV2() {
       <div
         style={{
           display: "grid",
-          gap: 24,
+          gap: 18,
           alignItems: "start",
           gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))"
         }}
       >
-        <aside style={{ display: "grid", gap: 18 }}>
+        <aside style={{ display: "grid", gap: 16 }}>
           <section style={panelStyle}>
             <div style={{ display: "flex", justifyContent: "space-between", gap: 12, alignItems: "center" }}>
               <div>
                 <div style={{ ...labelStyle, color: "var(--text-dim)" }}>Центр управления</div>
-                <h2 style={{ margin: "8px 0 0", fontSize: 28 }}>Рабочая панель</h2>
+                <h2 style={{ margin: "6px 0 0", fontSize: 22 }}>Рабочая панель</h2>
               </div>
               <button onClick={() => void loadRoutes(true)} disabled={refreshing} style={buttonStyle("ghost")}>
-                {refreshing ? "Обновляю..." : "GitHub"}
+                {refreshing ? "Обновляю..." : "Обновить из GitHub"}
               </button>
             </div>
 
-            <div style={{ marginTop: 20, display: "grid", gap: 12 }}>
+            <div style={{ marginTop: 16, display: "grid", gap: 10 }}>
               <label style={labelStyle}>Активная группа</label>
               <select value={selectedGroupId} onChange={(event) => setSelectedGroupId(event.target.value)} style={fieldStyle}>
                 <option value="">Выберите группу</option>
@@ -555,22 +557,29 @@ export default function RouteEditorV2() {
                   </option>
                 ))}
               </select>
+              <div style={{ color: "var(--text-dim)", fontSize: 12 }}>
+                Эта кнопка обновляет список из GitHub и заново перечитывает текущую версию файла.
+              </div>
 
-              <label style={labelStyle}>Добавить IP, CIDR или домены</label>
+              <label style={{ ...labelStyle, marginTop: 4 }}>Добавить адреса или домены</label>
               <textarea
                 value={bulkInput}
                 onChange={(event) => setBulkInput(event.target.value)}
                 placeholder="Вставьте IP-адреса, подсети или домены. Разделяйте запятой или с новой строки."
-                style={{ ...fieldStyle, minHeight: 170, resize: "vertical" }}
+                style={{ ...fieldStyle, minHeight: 135, resize: "vertical" }}
               />
+              <div style={{ color: "var(--text-dim)", fontSize: 12 }}>
+                Тип определяется автоматически. Отдельный выбор `CIDR/IP` больше не нужен.
+              </div>
+
               <button onClick={addBulkToGroup} style={buttonStyle("primary")}>
                 Добавить в выбранную группу
               </button>
             </div>
 
-            <div style={{ marginTop: 22, display: "grid", gap: 12 }}>
+            <div style={{ marginTop: 18, display: "grid", gap: 10 }}>
               <label style={labelStyle}>Новая группа</label>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 10 }}>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 8 }}>
                 <input
                   value={newGroupName}
                   onChange={(event) => setNewGroupName(event.target.value)}
@@ -585,14 +594,14 @@ export default function RouteEditorV2() {
 
             <div
               style={{
-                marginTop: 22,
-                padding: 14,
-                borderRadius: 18,
+                marginTop: 18,
+                padding: 12,
+                borderRadius: 12,
                 border: "1px solid rgba(118, 164, 209, 0.12)",
                 background: "rgba(8, 14, 25, 0.72)",
                 color: "var(--text-muted)",
-                fontSize: 14,
-                lineHeight: 1.55
+                fontSize: 12.5,
+                lineHeight: 1.6
               }}
             >
               <div>Загружено групп: {data.groups.length}</div>
@@ -602,7 +611,7 @@ export default function RouteEditorV2() {
             </div>
 
             {duplicateValues.length > 0 ? (
-              <div style={{ marginTop: 12, display: "grid", gap: 8 }}>
+              <div style={{ marginTop: 10, display: "grid", gap: 8 }}>
                 <label style={labelStyle}>Дубли в текущей вставке</label>
                 <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
                   {duplicateValues.map((value) => (
@@ -615,15 +624,15 @@ export default function RouteEditorV2() {
             ) : null}
           </section>
 
-          <section style={{ ...panelStyle, display: "grid", gap: 14 }}>
+          <section style={{ ...panelStyle, display: "grid", gap: 12 }}>
             <div>
-              <h3 style={{ margin: 0, fontSize: 22 }}>Общий список</h3>
-              <div style={{ marginTop: 6, color: "var(--text-muted)", fontSize: 14 }}>
-                Сохранение в GitHub и локальная выгрузка итогового файла
+              <h3 style={{ margin: 0, fontSize: 18 }}>Общий список</h3>
+              <div style={{ marginTop: 5, color: "var(--text-muted)", fontSize: 12.5 }}>
+                Здесь можно сохранить текущую структуру в GitHub или скачать итоговый файл локально.
               </div>
             </div>
 
-            <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+            <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
               <button onClick={() => void save()} disabled={saving} style={buttonStyle("primary")}>
                 {saving ? "Сохраняю..." : "Сохранить в GitHub"}
               </button>
@@ -635,8 +644,8 @@ export default function RouteEditorV2() {
             {message ? (
               <div
                 style={{
-                  padding: "12px 14px",
-                  borderRadius: 16,
+                  padding: "10px 12px",
+                  borderRadius: 12,
                   border: "1px solid",
                   borderColor:
                     messageTone === "error"
@@ -649,7 +658,8 @@ export default function RouteEditorV2() {
                       ? "rgba(60, 17, 22, 0.5)"
                       : messageTone === "success"
                         ? "rgba(7, 42, 40, 0.5)"
-                        : "rgba(12, 20, 35, 0.7)"
+                        : "rgba(12, 20, 35, 0.7)",
+                  fontSize: 12.5
                 }}
               >
                 {message}
@@ -662,65 +672,65 @@ export default function RouteEditorV2() {
               placeholder="Здесь будет итоговый smart-route-list.txt"
               style={{
                 ...fieldStyle,
-                minHeight: 240,
+                minHeight: 220,
                 resize: "vertical",
                 fontFamily: "Consolas, 'Courier New', monospace",
-                fontSize: 13.5,
-                lineHeight: 1.55
+                fontSize: 12.5,
+                lineHeight: 1.5
               }}
             />
           </section>
         </aside>
 
-        <section style={{ ...panelStyle, borderRadius: 30 }}>
+        <section style={{ ...panelStyle, borderRadius: 20 }}>
           <div
             style={{
               display: "flex",
               justifyContent: "space-between",
               gap: 16,
               alignItems: "center",
-              marginBottom: 18,
+              marginBottom: 14,
               flexWrap: "wrap"
             }}
           >
             <div>
               <div style={{ ...labelStyle, color: "var(--text-dim)" }}>Группы и записи</div>
-              <h2 style={{ margin: "8px 0 0", fontSize: 28 }}>Структура маршрутов</h2>
+              <h2 style={{ margin: "6px 0 0", fontSize: 22 }}>Структура маршрутов</h2>
             </div>
-            <div style={{ color: "var(--text-muted)", fontSize: 14 }}>
-              Секции можно сворачивать, чтобы длинный список был аккуратнее
+            <div style={{ color: "var(--text-muted)", fontSize: 12.5 }}>
+              Все группы изначально свернуты. Откройте нужную, чтобы редактировать записи.
             </div>
           </div>
 
-          <div style={{ display: "grid", gap: 14 }}>
+          <div style={{ display: "grid", gap: 10 }}>
             {data.groups.map((group, groupIndex) => {
-              const open = expanded[group.id] ?? true;
+              const open = expanded[group.id] ?? false;
               const active = group.id === selectedGroupId;
-              const exactHits = group.items.filter((item) => issues.exactDuplicates.has(item.id)).length;
-              const overlapHits = group.items.filter((item) => issues.overlapItems.has(item.id)).length;
+              const exactHits = group.items.filter((item) => analysis.exactDuplicates.has(item.id)).length;
+              const overlapHits = group.items.filter((item) => analysis.overlapItems.has(item.id)).length;
 
               return (
                 <article
                   key={group.id}
                   style={{
-                    borderRadius: 24,
+                    borderRadius: 16,
                     border: active ? "1px solid var(--border-strong)" : "1px solid var(--border)",
-                    background: active ? "rgba(10, 34, 40, 0.74)" : "rgba(10, 18, 31, 0.78)",
+                    background: active ? "rgba(10, 34, 40, 0.7)" : "rgba(10, 18, 31, 0.76)",
                     overflow: "hidden"
                   }}
                 >
                   <div
                     style={{
-                      padding: "16px 18px",
+                      padding: "12px 14px",
                       display: "grid",
                       gridTemplateColumns: "auto 1fr auto",
-                      gap: 14,
+                      gap: 10,
                       alignItems: "center"
                     }}
                   >
                     <button
                       onClick={() => setExpanded((current) => ({ ...current, [group.id]: !open }))}
-                      style={{ ...buttonStyle("ghost"), width: 42, height: 42, padding: 0, fontSize: 18 }}
+                      style={{ ...buttonStyle("ghost"), width: 36, height: 36, padding: 0, fontSize: 16 }}
                     >
                       {open ? "-" : "+"}
                     </button>
@@ -735,18 +745,18 @@ export default function RouteEditorV2() {
                             return current;
                           });
                         }}
-                        style={{ ...fieldStyle, padding: "10px 12px", fontWeight: 700, fontSize: 18 }}
+                        style={{ ...fieldStyle, padding: "8px 10px", fontWeight: 700, fontSize: 15 }}
                       />
-                      <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 10 }}>
+                      <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 8 }}>
                         <Badge>{group.items.length} записей</Badge>
                         {exactHits ? <Badge tone="danger">{exactHits} дублей</Badge> : null}
                         {overlapHits ? <Badge tone="warning">{overlapHits} пересечений</Badge> : null}
                       </div>
                     </div>
 
-                    <div style={{ display: "flex", gap: 10, flexWrap: "wrap", justifyContent: "flex-end" }}>
+                    <div style={{ display: "flex", gap: 8, flexWrap: "wrap", justifyContent: "flex-end" }}>
                       <button onClick={() => setSelectedGroupId(group.id)} style={buttonStyle("ghost")}>
-                        Открыть слева
+                        Слева
                       </button>
                       <button
                         onClick={() => {
@@ -764,14 +774,15 @@ export default function RouteEditorV2() {
                   </div>
 
                   {open ? (
-                    <div style={{ padding: "0 18px 18px", display: "grid", gap: 10 }}>
+                    <div style={{ padding: "0 14px 14px", display: "grid", gap: 8 }}>
                       {group.items.length === 0 ? (
                         <div
                           style={{
-                            padding: "16px 18px",
-                            borderRadius: 18,
+                            padding: "14px 16px",
+                            borderRadius: 12,
                             color: "var(--text-muted)",
-                            border: "1px dashed var(--border)"
+                            border: "1px dashed var(--border)",
+                            fontSize: 12.5
                           }}
                         >
                           Группа пока пустая
@@ -779,52 +790,37 @@ export default function RouteEditorV2() {
                       ) : null}
 
                       {group.items.map((item, itemIndex) => {
-                        const exact = issues.exactDuplicates.has(item.id);
-                        const overlap = issues.overlapItems.has(item.id);
-                        const notes = Array.from(new Set(issues.labels.get(item.id) ?? []));
+                        const exact = analysis.exactDuplicates.has(item.id);
+                        const overlap = analysis.overlapItems.has(item.id);
+                        const notes = Array.from(new Set(analysis.explanations.get(item.id) ?? []));
 
                         return (
                           <div
                             key={item.id}
                             style={{
-                              borderRadius: 18,
+                              borderRadius: 14,
                               border: "1px solid",
                               borderColor: exact
-                                ? "rgba(255, 125, 125, 0.32)"
+                                ? "rgba(255, 125, 125, 0.28)"
                                 : overlap
-                                  ? "rgba(255, 196, 107, 0.3)"
+                                  ? "rgba(255, 196, 107, 0.24)"
                                   : "rgba(118, 164, 209, 0.14)",
                               background: exact
-                                ? "rgba(62, 20, 23, 0.48)"
+                                ? "rgba(62, 20, 23, 0.42)"
                                 : overlap
-                                  ? "rgba(64, 43, 10, 0.34)"
-                                  : "rgba(9, 16, 27, 0.75)",
-                              padding: 14
+                                  ? "rgba(64, 43, 10, 0.22)"
+                                  : "rgba(9, 16, 27, 0.72)",
+                              padding: 12
                             }}
                           >
                             <div
                               style={{
                                 display: "grid",
-                                gridTemplateColumns: "140px minmax(0, 1fr) auto",
-                                gap: 12,
+                                gridTemplateColumns: "minmax(0, 1fr) auto",
+                                gap: 10,
                                 alignItems: "start"
                               }}
                             >
-                              <select
-                                value={item.type}
-                                onChange={(event) => {
-                                  const value = event.target.value as RouteItemType;
-                                  updateData((current) => {
-                                    current.groups[groupIndex].items[itemIndex].type = value;
-                                    return current;
-                                  });
-                                }}
-                                style={fieldStyle}
-                              >
-                                <option value="domain">domain</option>
-                                <option value="cidr">cidr / ip</option>
-                              </select>
-
                               <div>
                                 <input
                                   value={item.value}
@@ -838,15 +834,15 @@ export default function RouteEditorV2() {
                                   }}
                                   style={fieldStyle}
                                 />
-                                <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 10 }}>
+                                <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 8 }}>
                                   <Badge>{itemKind(item)}</Badge>
                                   {exact ? <Badge tone="danger">Точный дубль</Badge> : null}
-                                  {overlap ? <Badge tone="warning">Есть пересечение</Badge> : null}
+                                  {overlap ? <Badge tone="warning">Уже покрывается</Badge> : null}
                                 </div>
                                 {notes.length > 0 ? (
-                                  <div style={{ marginTop: 10, display: "grid", gap: 6 }}>
+                                  <div style={{ marginTop: 8, display: "grid", gap: 5 }}>
                                     {notes.map((note) => (
-                                      <div key={note} style={{ color: "var(--warning)", fontSize: 13.5 }}>
+                                      <div key={note} style={{ color: "var(--warning)", fontSize: 12.5, lineHeight: 1.45 }}>
                                         {note}
                                       </div>
                                     ))}
