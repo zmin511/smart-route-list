@@ -29,6 +29,7 @@ body {
   color: var(--text);
   font-family: "Segoe UI", "Trebuchet MS", sans-serif;
   background: transparent;
+  font-size: 14px;
 }
 
 button,
