@@ -222,6 +222,7 @@ lookerstudio.google.com#youtube
 172.253.130.113#youtube
 216.239.36.223#youtube
 209.85.233.139#youtube
+clawhub.ai#"to VPN"
 clamav.net#"to VPN"
 elevenlabs.io#"to VPN"
 challenges.cloudflare.com#"to VPN"
