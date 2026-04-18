@@ -222,24 +222,25 @@ lookerstudio.google.com#youtube
 172.253.130.113#youtube
 216.239.36.223#youtube
 209.85.233.139#youtube
-clawhub.ai#"to VPN"
-clamav.net#"to VPN"
-elevenlabs.io#"to VPN"
-challenges.cloudflare.com#"to VPN"
-cloudflare.com#"to VPN"
-googleusercontent.com#"to VPN"
-oogleapis.com#"to VPN"
-generativelanguage.googleapis.com#"to VPN"
-aistudio.google.com1#"to VPN"
-oauth2.googleapis.com#"to VPN"
-fonts.gstatic.com#"to VPN"
-www.gstatic.com#"to VPN"
-content-storage-upload.googleapis.com#"to VPN"
-cloud.google.com#"to VPN"
-lh3.googleusercontent.com#"to VPN"
-ssl.gstatic.com#"to VPN"
-www.intel.com#"to VPN"
-joxi.ru#"to VPN"
+23.35.104.0/24#to VPN
+clawhub.ai#to VPN
+clamav.net#to VPN
+elevenlabs.io#to VPN
+challenges.cloudflare.com#to VPN
+cloudflare.com#to VPN
+googleusercontent.com#to VPN
+oogleapis.com#to VPN
+generativelanguage.googleapis.com#to VPN
+aistudio.google.com1#to VPN
+oauth2.googleapis.com#to VPN
+fonts.gstatic.com#to VPN
+www.gstatic.com#to VPN
+content-storage-upload.googleapis.com#to VPN
+cloud.google.com#to VPN
+lh3.googleusercontent.com#to VPN
+ssl.gstatic.com#to VPN
+www.intel.com#to VPN
+joxi.ru#to VPN
 13.249.141.0/24#Claude
 108.157.229.0/24#Claude
 grok.com#Grok
