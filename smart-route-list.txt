@@ -296,3 +296,4 @@ t.me#Telegram
 149.154.164.0/22#Telegram
 149.154.167.0/24#Telegram
 149.154.175.0/24#Telegram
+slack.com#slack
