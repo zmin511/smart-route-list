@@ -1,2068 +1,1533 @@
 {
   "groups": [
     {
-      "id": "b7z1uag6",
+      "id": "9t0dlc95",
       "name": "discord",
       "items": [
         {
-          "id": "eg3qj553",
+          "id": "htdu3srg",
           "type": "cidr",
           "value": "108.61.169.0/24"
         },
         {
-          "id": "3xzreb6j",
+          "id": "f1bn4qs1",
           "type": "cidr",
           "value": "108.61.173.0/24"
         },
         {
-          "id": "0r7tg9ii",
+          "id": "waohvqli",
           "type": "cidr",
           "value": "108.61.174.0/24"
         },
         {
-          "id": "mr0x4xsd",
+          "id": "jjtl76xv",
           "type": "cidr",
           "value": "108.61.175.0/24"
         },
         {
-          "id": "onmovtek",
+          "id": "3i6vckho",
           "type": "cidr",
           "value": "128.116.0.0/16"
         },
         {
-          "id": "ivsxzugk",
+          "id": "z6dqdzdz",
           "type": "cidr",
           "value": "192.64.174.0/24"
         },
         {
-          "id": "qa0ax7yq",
+          "id": "8v8w0x4p",
           "type": "cidr",
           "value": "198.41.128.0/17"
         },
         {
-          "id": "0qt78hm2",
+          "id": "j8aezzi4",
           "type": "cidr",
           "value": "34.126.226.51"
         },
         {
-          "id": "xh40t5ib",
+          "id": "qz3v3nth",
           "type": "cidr",
           "value": "162.159.128.0/18"
         }
       ]
     },
     {
-      "id": "oskpw26v",
+      "id": "5ddmjk3v",
       "name": "insta",
       "items": [
         {
-          "id": "43d73uoj",
-          "type": "cidr",
-          "value": "204.15.20.0/22"
+          "id": "ywllyxj1",
+          "type": "domain",
+          "value": "instagram.com"
         },
         {
-          "id": "vw3hwvem",
-          "type": "cidr",
-          "value": "185.89.216.0/22"
+          "id": "upkwv1qn",
+          "type": "domain",
+          "value": "www.instagram.com"
         },
         {
-          "id": "bg75ide8",
-          "type": "cidr",
-          "value": "185.60.216.0/22"
+          "id": "rm618w1r",
+          "type": "domain",
+          "value": "i.instagram.com"
         },
         {
-          "id": "rxqur39u",
-          "type": "cidr",
-          "value": "173.252.96.0/19"
+          "id": "ccjpv5yg",
+          "type": "domain",
+          "value": "b.i.instagram.com"
         },
         {
-          "id": "ir1ti0fy",
-          "type": "cidr",
-          "value": "173.252.88.0/21"
+          "id": "0dqmzwph",
+          "type": "domain",
+          "value": "graph.instagram.com"
         },
         {
-          "id": "mbumdfvt",
-          "type": "cidr",
-          "value": "173.252.64.0/19"
+          "id": "db0w0h8r",
+          "type": "domain",
+          "value": "cdninstagram.com"
         },
         {
-          "id": "9tzgkkb3",
-          "type": "cidr",
-          "value": "163.77.136.0/23"
+          "id": "zdw5teuq",
+          "type": "domain",
+          "value": "fbcdn.net"
         },
         {
-          "id": "goc95n2x",
-          "type": "cidr",
-          "value": "163.77.132.0/23"
+          "id": "5zf7eg1c",
+          "type": "domain",
+          "value": "facebook.com"
         },
         {
-          "id": "i0ne87xd",
-          "type": "cidr",
-          "value": "163.70.128.0/17"
+          "id": "0izoq3hn",
+          "type": "domain",
+          "value": "www.facebook.com"
         },
         {
-          "id": "xd9ut60o",
-          "type": "cidr",
-          "value": "157.240.192.0/18"
+          "id": "vl3thxbj",
+          "type": "domain",
+          "value": "m.facebook.com"
         },
         {
-          "id": "22kzydhr",
-          "type": "cidr",
-          "value": "157.240.0.0/17"
+          "id": "96s71i6i",
+          "type": "domain",
+          "value": "graph.facebook.com"
         },
         {
-          "id": "ice296ga",
-          "type": "cidr",
-          "value": "129.134.0.0/17"
+          "id": "esa1ejpu",
+          "type": "domain",
+          "value": "connect.facebook.net"
         },
         {
-          "id": "qyzes2d4",
-          "type": "cidr",
-          "value": "103.4.96.0/22"
+          "id": "mz1jtk49",
+          "type": "domain",
+          "value": "fb.com"
         },
         {
-          "id": "0vf5jes6",
-          "type": "cidr",
-          "value": "102.132.96.0/20"
+          "id": "1adi51ym",
+          "type": "domain",
+          "value": "messenger.com"
         },
         {
-          "id": "z95jo7l5",
-          "type": "cidr",
-          "value": "74.119.76.0/22"
-        },
-        {
-          "id": "ytvf8wsm",
-          "type": "cidr",
-          "value": "66.220.144.0/20"
-        },
-        {
-          "id": "pcmg9gkg",
-          "type": "cidr",
-          "value": "57.145.18.0/23"
-        },
-        {
-          "id": "lbtnbcg6",
-          "type": "cidr",
-          "value": "57.145.12.0/23"
-        },
-        {
-          "id": "84253msj",
-          "type": "cidr",
-          "value": "57.145.10.0/23"
-        },
-        {
-          "id": "8qa7zg8v",
-          "type": "cidr",
-          "value": "57.145.8.0/23"
-        },
-        {
-          "id": "2jtojt49",
-          "type": "cidr",
-          "value": "57.145.6.0/23"
-        },
-        {
-          "id": "rmoh32hw",
-          "type": "cidr",
-          "value": "57.145.4.0/23"
-        },
-        {
-          "id": "32twd8yc",
-          "type": "cidr",
-          "value": "57.145.2.0/23"
-        },
-        {
-          "id": "22zuy7nr",
-          "type": "cidr",
-          "value": "57.145.0.0/23"
-        },
-        {
-          "id": "5z9zd3be",
-          "type": "cidr",
-          "value": "57.144.254.0/23"
-        },
-        {
-          "id": "8pei5sd1",
-          "type": "cidr",
-          "value": "57.144.252.0/23"
-        },
-        {
-          "id": "n4bjxug4",
-          "type": "cidr",
-          "value": "57.144.250.0/23"
-        },
-        {
-          "id": "oe6mt0qr",
-          "type": "cidr",
-          "value": "57.144.248.0/23"
-        },
-        {
-          "id": "lkyk2i4s",
-          "type": "cidr",
-          "value": "57.144.246.0/23"
-        },
-        {
-          "id": "cmelng2r",
-          "type": "cidr",
-          "value": "57.144.244.0/23"
-        },
-        {
-          "id": "kxo2g61d",
-          "type": "cidr",
-          "value": "57.144.242.0/23"
-        },
-        {
-          "id": "6muuf8s7",
-          "type": "cidr",
-          "value": "57.144.240.0/23"
-        },
-        {
-          "id": "ndnp420n",
-          "type": "cidr",
-          "value": "57.144.238.0/23"
-        },
-        {
-          "id": "1u72b72a",
-          "type": "cidr",
-          "value": "57.144.236.0/23"
-        },
-        {
-          "id": "7irijhkx",
-          "type": "cidr",
-          "value": "57.144.234.0/23"
-        },
-        {
-          "id": "wnxdt8wj",
-          "type": "cidr",
-          "value": "57.144.232.0/23"
-        },
-        {
-          "id": "1qlg3bwb",
-          "type": "cidr",
-          "value": "57.144.228.0/23"
-        },
-        {
-          "id": "hn83rhqw",
-          "type": "cidr",
-          "value": "57.144.224.0/23"
-        },
-        {
-          "id": "gw08kxb4",
-          "type": "cidr",
-          "value": "57.144.222.0/23"
-        },
-        {
-          "id": "sle05xzq",
-          "type": "cidr",
-          "value": "57.144.220.0/23"
-        },
-        {
-          "id": "ixkexrjt",
-          "type": "cidr",
-          "value": "57.144.218.0/23"
-        },
-        {
-          "id": "eimept43",
-          "type": "cidr",
-          "value": "57.144.216.0/23"
-        },
-        {
-          "id": "9p8dhwg3",
-          "type": "cidr",
-          "value": "57.144.212.0/23"
-        },
-        {
-          "id": "wsjh1ct3",
-          "type": "cidr",
-          "value": "57.144.210.0/23"
-        },
-        {
-          "id": "tinaxuah",
-          "type": "cidr",
-          "value": "57.144.208.0/23"
-        },
-        {
-          "id": "y6yp70ir",
-          "type": "cidr",
-          "value": "57.144.206.0/23"
-        },
-        {
-          "id": "bjlfv228",
-          "type": "cidr",
-          "value": "57.144.204.0/23"
-        },
-        {
-          "id": "ozqei4qq",
-          "type": "cidr",
-          "value": "57.144.202.0/23"
-        },
-        {
-          "id": "8vx3ynk6",
-          "type": "cidr",
-          "value": "57.144.200.0/23"
-        },
-        {
-          "id": "d5we8856",
-          "type": "cidr",
-          "value": "57.144.198.0/23"
-        },
-        {
-          "id": "qz3sup3w",
-          "type": "cidr",
-          "value": "57.144.196.0/23"
-        },
-        {
-          "id": "szke7orf",
-          "type": "cidr",
-          "value": "57.144.194.0/23"
-        },
-        {
-          "id": "cjcx066u",
-          "type": "cidr",
-          "value": "57.144.192.0/23"
-        },
-        {
-          "id": "jwg9ikwa",
-          "type": "cidr",
-          "value": "57.144.188.0/23"
-        },
-        {
-          "id": "wphrzzp1",
-          "type": "cidr",
-          "value": "57.144.186.0/23"
-        },
-        {
-          "id": "qnp5z4dn",
-          "type": "cidr",
-          "value": "57.144.184.0/23"
-        },
-        {
-          "id": "7jh68bst",
-          "type": "cidr",
-          "value": "57.144.182.0/23"
-        },
-        {
-          "id": "90bqtdkd",
-          "type": "cidr",
-          "value": "57.144.180.0/23"
-        },
-        {
-          "id": "0gbxu167",
-          "type": "cidr",
-          "value": "57.144.178.0/23"
-        },
-        {
-          "id": "2glmtn25",
-          "type": "cidr",
-          "value": "57.144.176.0/23"
-        },
-        {
-          "id": "d3sdlrtw",
-          "type": "cidr",
-          "value": "57.144.174.0/23"
-        },
-        {
-          "id": "pgwi5sz7",
-          "type": "cidr",
-          "value": "57.144.172.0/23"
-        },
-        {
-          "id": "hn4cm4d6",
-          "type": "cidr",
-          "value": "57.144.168.0/23"
-        },
-        {
-          "id": "9say0bs6",
-          "type": "cidr",
-          "value": "57.144.164.0/23"
-        },
-        {
-          "id": "kwxmd8pq",
-          "type": "cidr",
-          "value": "57.144.162.0/23"
-        },
-        {
-          "id": "hsxof6wb",
-          "type": "cidr",
-          "value": "57.144.160.0/23"
-        },
-        {
-          "id": "y8a4evi6",
-          "type": "cidr",
-          "value": "57.144.152.0/23"
-        },
-        {
-          "id": "pq62eogw",
-          "type": "cidr",
-          "value": "57.144.150.0/23"
-        },
-        {
-          "id": "hyzte6mh",
-          "type": "cidr",
-          "value": "57.144.148.0/23"
-        },
-        {
-          "id": "s4n5xp2n",
-          "type": "cidr",
-          "value": "57.144.146.0/23"
-        },
-        {
-          "id": "yth8m9p9",
-          "type": "cidr",
-          "value": "57.144.144.0/23"
-        },
-        {
-          "id": "su8aib75",
-          "type": "cidr",
-          "value": "57.144.142.0/23"
-        },
-        {
-          "id": "z7cs3vg1",
-          "type": "cidr",
-          "value": "57.144.140.0/23"
-        },
-        {
-          "id": "nfoxp414",
-          "type": "cidr",
-          "value": "57.144.138.0/23"
-        },
-        {
-          "id": "bwbo17bx",
-          "type": "cidr",
-          "value": "57.144.136.0/23"
-        },
-        {
-          "id": "g8nic0t0",
-          "type": "cidr",
-          "value": "57.144.134.0/23"
-        },
-        {
-          "id": "9dzlrg1j",
-          "type": "cidr",
-          "value": "57.144.132.0/23"
-        },
-        {
-          "id": "5blugwor",
-          "type": "cidr",
-          "value": "57.144.128.0/23"
-        },
-        {
-          "id": "ghtapzuc",
-          "type": "cidr",
-          "value": "57.144.126.0/23"
-        },
-        {
-          "id": "9ox8d4xe",
-          "type": "cidr",
-          "value": "57.144.124.0/23"
-        },
-        {
-          "id": "mef8knk7",
-          "type": "cidr",
-          "value": "57.144.122.0/23"
-        },
-        {
-          "id": "bvgu0b6y",
-          "type": "cidr",
-          "value": "57.144.120.0/23"
-        },
-        {
-          "id": "pt8xwx34",
-          "type": "cidr",
-          "value": "57.144.116.0/23"
-        },
-        {
-          "id": "qm8ahe17",
-          "type": "cidr",
-          "value": "57.144.114.0/23"
-        },
-        {
-          "id": "1olf21ii",
-          "type": "cidr",
-          "value": "57.144.112.0/23"
-        },
-        {
-          "id": "96ca7g2m",
-          "type": "cidr",
-          "value": "57.144.110.0/23"
-        },
-        {
-          "id": "s52itr9n",
-          "type": "cidr",
-          "value": "57.144.108.0/23"
-        },
-        {
-          "id": "7oauu0ev",
-          "type": "cidr",
-          "value": "57.144.104.0/23"
-        },
-        {
-          "id": "ejlnjfd4",
-          "type": "cidr",
-          "value": "57.144.100.0/23"
-        },
-        {
-          "id": "gw8a5th9",
-          "type": "cidr",
-          "value": "57.144.78.0/23"
-        },
-        {
-          "id": "6mnm370y",
-          "type": "cidr",
-          "value": "57.144.76.0/23"
-        },
-        {
-          "id": "4ib4juiy",
-          "type": "cidr",
-          "value": "57.144.74.0/23"
-        },
-        {
-          "id": "qxisawdr",
-          "type": "cidr",
-          "value": "57.144.72.0/23"
-        },
-        {
-          "id": "4nr6aht8",
-          "type": "cidr",
-          "value": "57.144.70.0/23"
-        },
-        {
-          "id": "06tk8oga",
-          "type": "cidr",
-          "value": "57.144.68.0/23"
-        },
-        {
-          "id": "gl4uhbe8",
-          "type": "cidr",
-          "value": "57.144.66.0/23"
-        },
-        {
-          "id": "u6ljjf3v",
-          "type": "cidr",
-          "value": "57.144.64.0/23"
-        },
-        {
-          "id": "tj36acxo",
-          "type": "cidr",
-          "value": "57.144.60.0/23"
-        },
-        {
-          "id": "fql4uvyp",
-          "type": "cidr",
-          "value": "57.144.56.0/23"
-        },
-        {
-          "id": "eqx44rul",
-          "type": "cidr",
-          "value": "57.144.54.0/23"
-        },
-        {
-          "id": "en7eigm6",
-          "type": "cidr",
-          "value": "57.144.52.0/23"
-        },
-        {
-          "id": "g338t191",
-          "type": "cidr",
-          "value": "57.144.50.0/23"
-        },
-        {
-          "id": "g5knhp85",
-          "type": "cidr",
-          "value": "57.144.48.0/23"
-        },
-        {
-          "id": "o1c6lm7f",
-          "type": "cidr",
-          "value": "57.144.46.0/23"
-        },
-        {
-          "id": "n41xkwfh",
-          "type": "cidr",
-          "value": "57.144.44.0/23"
-        },
-        {
-          "id": "huq0z93a",
-          "type": "cidr",
-          "value": "57.144.42.0/23"
-        },
-        {
-          "id": "4swkazas",
-          "type": "cidr",
-          "value": "57.144.40.0/23"
-        },
-        {
-          "id": "5mgkzdp1",
-          "type": "cidr",
-          "value": "57.144.38.0/23"
-        },
-        {
-          "id": "tiv6ncna",
-          "type": "cidr",
-          "value": "57.144.22.0/23"
-        },
-        {
-          "id": "hsvcnaah",
-          "type": "cidr",
-          "value": "57.144.14.0/23"
-        },
-        {
-          "id": "ivv7i5gz",
-          "type": "cidr",
-          "value": "57.141.21.0/24"
-        },
-        {
-          "id": "m8784zxv",
-          "type": "cidr",
-          "value": "57.141.20.0/24"
-        },
-        {
-          "id": "pkq37f1x",
-          "type": "cidr",
-          "value": "57.141.19.0/24"
-        },
-        {
-          "id": "a21icc4x",
-          "type": "cidr",
-          "value": "57.141.18.0/24"
-        },
-        {
-          "id": "co9hiddr",
-          "type": "cidr",
-          "value": "57.141.17.0/24"
-        },
-        {
-          "id": "mmgpzsye",
-          "type": "cidr",
-          "value": "57.141.16.0/24"
-        },
-        {
-          "id": "n894hg2h",
-          "type": "cidr",
-          "value": "57.141.15.0/24"
-        },
-        {
-          "id": "x8s8yozn",
-          "type": "cidr",
-          "value": "57.141.14.0/24"
-        },
-        {
-          "id": "tqgb5u7g",
-          "type": "cidr",
-          "value": "57.141.13.0/24"
-        },
-        {
-          "id": "44z74v3x",
-          "type": "cidr",
-          "value": "57.141.12.0/24"
-        },
-        {
-          "id": "1f71w78n",
-          "type": "cidr",
-          "value": "57.141.11.0/24"
-        },
-        {
-          "id": "54a58rvd",
-          "type": "cidr",
-          "value": "57.141.10.0/24"
-        },
-        {
-          "id": "ef229y86",
-          "type": "cidr",
-          "value": "57.141.9.0/24"
-        },
-        {
-          "id": "yy77u6ov",
-          "type": "cidr",
-          "value": "57.141.8.0/24"
-        },
-        {
-          "id": "sn8dswpi",
-          "type": "cidr",
-          "value": "57.141.7.0/24"
-        },
-        {
-          "id": "a4pwbpco",
-          "type": "cidr",
-          "value": "57.141.6.0/24"
-        },
-        {
-          "id": "kip6ragp",
-          "type": "cidr",
-          "value": "57.141.5.0/24"
-        },
-        {
-          "id": "924ygn9q",
-          "type": "cidr",
-          "value": "57.141.4.0/24"
-        },
-        {
-          "id": "s6wyhaaa",
-          "type": "cidr",
-          "value": "57.141.3.0/24"
-        },
-        {
-          "id": "7ul1i2fj",
-          "type": "cidr",
-          "value": "57.141.2.0/24"
-        },
-        {
-          "id": "6tmez8m2",
-          "type": "cidr",
-          "value": "57.141.1.0/24"
-        },
-        {
-          "id": "e44k9bn4",
-          "type": "cidr",
-          "value": "57.141.0.0/24"
-        },
-        {
-          "id": "gy3qq9xq",
-          "type": "cidr",
-          "value": "31.13.64.0/18"
-        },
-        {
-          "id": "ot7txpmk",
+          "id": "vzjmpbqh",
           "type": "cidr",
           "value": "31.13.24.0/21"
         },
         {
-          "id": "cccc9v5d",
+          "id": "qytbj7z5",
           "type": "cidr",
-          "value": "57.144.227.0/24"
+          "value": "31.13.64.0/18"
         },
         {
-          "id": "oiqakdlo",
+          "id": "kf1ge1gh",
           "type": "cidr",
-          "value": "46.53.178.107"
+          "value": "45.64.40.0/22"
         },
         {
-          "id": "elgqdr3c",
+          "id": "a0j02r0j",
           "type": "cidr",
-          "value": "179.60.195.174"
+          "value": "57.141.0.0/20"
         },
         {
-          "id": "fhqc73m1",
+          "id": "5p2b5ag6",
+          "type": "cidr",
+          "value": "57.141.16.0/22"
+        },
+        {
+          "id": "zgf5p2an",
+          "type": "cidr",
+          "value": "57.141.20.0/23"
+        },
+        {
+          "id": "w4owt2r8",
+          "type": "cidr",
+          "value": "57.144.0.0/14"
+        },
+        {
+          "id": "nn6hqd4q",
+          "type": "cidr",
+          "value": "66.220.144.0/20"
+        },
+        {
+          "id": "6v3fom4w",
           "type": "cidr",
           "value": "69.63.176.0/20"
         },
         {
-          "id": "al56dpj6",
+          "id": "filrir3u",
           "type": "cidr",
           "value": "69.171.224.0/19"
         },
         {
-          "id": "ci3mmfn7",
+          "id": "n3jjhhhl",
+          "type": "cidr",
+          "value": "74.119.76.0/22"
+        },
+        {
+          "id": "5xo6wlkb",
+          "type": "cidr",
+          "value": "102.132.96.0/20"
+        },
+        {
+          "id": "1009xv9c",
+          "type": "cidr",
+          "value": "103.4.96.0/22"
+        },
+        {
+          "id": "r2d8n9v9",
+          "type": "cidr",
+          "value": "129.134.0.0/17"
+        },
+        {
+          "id": "nkte0iw9",
+          "type": "cidr",
+          "value": "157.240.0.0/17"
+        },
+        {
+          "id": "9dr84xs2",
+          "type": "cidr",
+          "value": "157.240.192.0/18"
+        },
+        {
+          "id": "seeqpx8i",
+          "type": "cidr",
+          "value": "163.70.128.0/17"
+        },
+        {
+          "id": "ig99rque",
+          "type": "cidr",
+          "value": "163.77.132.0/23"
+        },
+        {
+          "id": "xdsbm7br",
+          "type": "cidr",
+          "value": "163.77.136.0/23"
+        },
+        {
+          "id": "7u5rwu5b",
+          "type": "cidr",
+          "value": "173.252.64.0/18"
+        },
+        {
+          "id": "7a4v5hmu",
           "type": "cidr",
           "value": "179.60.192.0/22"
         },
         {
-          "id": "mdu2meek",
+          "id": "l4bl3jfx",
           "type": "cidr",
-          "value": "66.81.203.132"
+          "value": "185.60.216.0/22"
         },
         {
-          "id": "r3iaxmqc",
+          "id": "uifgawlf",
           "type": "cidr",
-          "value": "66.81.203.197"
+          "value": "185.89.216.0/22"
         },
         {
-          "id": "yltx768h",
+          "id": "1j2kybc5",
           "type": "cidr",
-          "value": "179.60.195.52"
-        },
-        {
-          "id": "ls616a9o",
-          "type": "cidr",
-          "value": "66.81.203.7"
-        },
-        {
-          "id": "yv712q2n",
-          "type": "cidr",
-          "value": "198.105.240.0/20"
-        },
-        {
-          "id": "a926p29b",
-          "type": "cidr",
-          "value": "188.144.96.0/24"
-        },
-        {
-          "id": "o7rzilp9",
-          "type": "cidr",
-          "value": "188.144.97.0/24"
+          "value": "204.15.20.0/22"
         }
       ]
     },
     {
-      "id": "4gywfg7q",
+      "id": "36aeiuib",
       "name": "GPT",
       "items": [
         {
-          "id": "4ahztysw",
+          "id": "b1bfoxq0",
           "type": "cidr",
           "value": "142.250.186.115"
         },
         {
-          "id": "yhb8uoxk",
+          "id": "4t66tqwn",
           "type": "cidr",
           "value": "23.35.228.138"
         },
         {
-          "id": "jsct5f9k",
+          "id": "a5m34i1f",
           "type": "cidr",
           "value": "13.107.246.60"
         },
         {
-          "id": "8h75z0k8",
+          "id": "wbctf80x",
           "type": "cidr",
           "value": "82.208.14.0/24"
         },
         {
-          "id": "1u74wu8g",
+          "id": "f1u7krzc",
           "type": "cidr",
           "value": "188.114.96.0/20"
         },
         {
-          "id": "9ry5y0za",
+          "id": "88w2bbky",
           "type": "cidr",
           "value": "184.105.0.0/16"
         },
         {
-          "id": "xt3rf58w",
+          "id": "8qe4ra6o",
           "type": "cidr",
           "value": "20.118.0.0/16"
         },
         {
-          "id": "bgv3vg6w",
+          "id": "ezt3e2dx",
           "type": "cidr",
           "value": "13.64.0.0/16"
         },
         {
-          "id": "xythoxc4",
+          "id": "slmxrw3n",
           "type": "cidr",
           "value": "20.0.0.0/16"
         },
         {
-          "id": "pgz66rft",
+          "id": "39hovt05",
           "type": "cidr",
           "value": "34.64.0.0/16"
         },
         {
-          "id": "18nexcrm",
+          "id": "4ldt561d",
           "type": "cidr",
           "value": "35.192.0.0/16"
         },
         {
-          "id": "16lfek96",
+          "id": "bcvb4xts",
           "type": "cidr",
           "value": "13.104.0.0/16"
         },
         {
-          "id": "zu76pxcd",
+          "id": "zo9fybo3",
           "type": "cidr",
           "value": "20.128.0.0/16"
         },
         {
-          "id": "g4shgn1d",
+          "id": "erz1r5o6",
           "type": "cidr",
           "value": "52.128.0.0/16"
         },
         {
-          "id": "tqcgmo0q",
+          "id": "ib969ord",
           "type": "cidr",
           "value": "52.224.0.0/16"
         },
         {
-          "id": "sjapba6m",
+          "id": "mj70szxw",
           "type": "cidr",
           "value": "104.40.0.0/16"
         },
         {
-          "id": "q37lzw4l",
+          "id": "1wb6w06s",
           "type": "cidr",
           "value": "137.116.0.0/16"
         },
         {
-          "id": "wpk5e711",
+          "id": "24sjz72c",
           "type": "cidr",
           "value": "191.232.0.0/16"
         },
         {
-          "id": "m2b6tskp",
+          "id": "bse3eptg",
           "type": "cidr",
           "value": "194.213.0.0/16"
         },
         {
-          "id": "mqdmm42q",
+          "id": "pg0hqswb",
           "type": "cidr",
           "value": "45.151.0.0/16"
         },
         {
-          "id": "o9je6ul1",
+          "id": "d8p6qzzl",
           "type": "cidr",
           "value": "103.21.244.0/22"
         },
         {
-          "id": "sx5gfiuf",
+          "id": "w0porevy",
           "type": "cidr",
           "value": "103.22.200.0/22"
         },
         {
-          "id": "k1xqgocx",
+          "id": "2miaa57j",
           "type": "cidr",
           "value": "103.31.4.0/22"
         },
         {
-          "id": "djhkswwj",
+          "id": "39us1vbi",
           "type": "cidr",
           "value": "104.16.0.0/13"
         },
         {
-          "id": "oarzc6l0",
+          "id": "msbx15xg",
           "type": "cidr",
           "value": "104.24.0.0/14"
         },
         {
-          "id": "4nhpevh6",
+          "id": "7b72ts28",
           "type": "cidr",
           "value": "108.162.192.0/18"
         },
         {
-          "id": "jwwu4pth",
+          "id": "orzq2ror",
           "type": "cidr",
           "value": "156.225.108.0/24"
         },
         {
-          "id": "hc8sn6xc",
+          "id": "ftovx9il",
           "type": "cidr",
           "value": "38.175.44.0/24"
         },
         {
-          "id": "safsxitd",
+          "id": "11bg3rz9",
           "type": "cidr",
           "value": "142.250.150.0/24"
         },
         {
-          "id": "sgpmjl94",
+          "id": "63vf9lw0",
           "type": "cidr",
           "value": "23.102.140.112/28"
         },
         {
-          "id": "bnnbvibj",
+          "id": "nt6xhixt",
           "type": "cidr",
           "value": "13.66.11.96/28"
         },
         {
-          "id": "ys617sd0",
+          "id": "ff5svr3x",
           "type": "cidr",
           "value": "104.210.133.240/28"
         },
         {
-          "id": "q8dxckwh",
+          "id": "4ai17izw",
           "type": "cidr",
           "value": "70.37.60.192/28"
         },
         {
-          "id": "v1ghf8tf",
+          "id": "fj7sug8u",
           "type": "cidr",
           "value": "20.97.188.144/28"
         },
         {
-          "id": "9sk1rq96",
+          "id": "u30ae4s2",
           "type": "cidr",
           "value": "20.161.76.48/28"
         },
         {
-          "id": "67hzfqo4",
+          "id": "bkewo0fr",
           "type": "cidr",
           "value": "52.234.32.208/28"
         },
         {
-          "id": "uhp9a32l",
+          "id": "ajp1z02j",
           "type": "cidr",
           "value": "52.156.132.32/28"
         },
         {
-          "id": "zmm71lrv",
+          "id": "dnzt98vo",
           "type": "cidr",
           "value": "40.84.220.192/28"
         },
         {
-          "id": "16mcjah8",
+          "id": "zvpi3cwj",
           "type": "cidr",
           "value": "23.98.178.64/28"
         },
         {
-          "id": "xc0zbzdn",
+          "id": "t73dh6km",
           "type": "cidr",
           "value": "51.8.155.32/28"
         },
         {
-          "id": "s7fhx3ns",
+          "id": "ducepj6s",
           "type": "cidr",
           "value": "20.246.77.240/28"
         },
         {
-          "id": "me9cvn7y",
+          "id": "j7xcfqu8",
           "type": "cidr",
           "value": "172.178.141.0/24"
         },
         {
-          "id": "4q0flqjv",
+          "id": "ui9dzxo0",
           "type": "cidr",
           "value": "40.84.180.128/28"
         },
         {
-          "id": "1j2bmopr",
+          "id": "v996j0m2",
           "type": "cidr",
           "value": "8.6.112.0/24"
         },
         {
-          "id": "kobcqbeq",
+          "id": "9gf5uvia",
           "type": "cidr",
           "value": "8.47.69.0/24"
         },
         {
-          "id": "1lmexyaj",
+          "id": "oyyho195",
           "type": "domain",
           "value": "chatgpt.com"
         },
         {
-          "id": "tppbh2u4",
+          "id": "23vu4asb",
           "type": "domain",
           "value": "openai.com"
         },
         {
-          "id": "u39k917r",
+          "id": "ho0o8lgu",
           "type": "cidr",
           "value": "134.0.118.88"
         },
         {
-          "id": "z7sv6f1k",
+          "id": "tnoseal6",
           "type": "cidr",
           "value": "131.0.72.0/22"
         },
         {
-          "id": "mpg8f7mv",
+          "id": "v55qx4hf",
           "type": "cidr",
           "value": "141.101.64.0/18"
         },
         {
-          "id": "cndv92au",
+          "id": "quhh2stz",
           "type": "cidr",
           "value": "162.158.0.0/15"
         },
         {
-          "id": "eelsl1f3",
+          "id": "zpy7fl79",
           "type": "cidr",
           "value": "172.64.0.0/13"
         },
         {
-          "id": "9yblv4se",
+          "id": "st4jpfnw",
           "type": "cidr",
           "value": "173.245.48.0/20"
         },
         {
-          "id": "kugqilwu",
+          "id": "kjcc8s7i",
           "type": "cidr",
           "value": "190.93.240.0/20"
         },
         {
-          "id": "956jhmux",
+          "id": "pkmj36s0",
           "type": "cidr",
           "value": "197.234.240.0/22"
         },
         {
-          "id": "c0uf54fr",
+          "id": "e5ami4ub",
           "type": "domain",
           "value": "www.chatgpt.com"
         },
         {
-          "id": "cse1e9w5",
+          "id": "exmt7y6m",
           "type": "domain",
           "value": "chat.openai.com"
         },
         {
-          "id": "7qb7uzsg",
+          "id": "2oap6lw1",
           "type": "domain",
           "value": "api.openai.com"
         },
         {
-          "id": "psz934jj",
+          "id": "3px415bt",
           "type": "domain",
           "value": "auth.openai.com"
         },
         {
-          "id": "r7i0evt9",
+          "id": "8g4seggh",
           "type": "domain",
           "value": "platform.openai.com"
         },
         {
-          "id": "bfa20cmr",
+          "id": "ji5j3cev",
           "type": "domain",
           "value": "cdn.openai.com"
         },
         {
-          "id": "j6bka43f",
+          "id": "8mc954wh",
           "type": "domain",
           "value": "oaistatic.com"
         },
         {
-          "id": "yw1if28p",
+          "id": "9riy0wxk",
           "type": "domain",
           "value": "cdn.oaistatic.com"
         },
         {
-          "id": "3xzv8t3h",
+          "id": "rqc6uii9",
           "type": "domain",
           "value": "persistent.oaistatic.com"
         },
         {
-          "id": "7ch35hyc",
+          "id": "2mwefkxg",
           "type": "domain",
           "value": "oaiusercontent.com"
         },
         {
-          "id": "5955optf",
+          "id": "vtgy0bq5",
           "type": "domain",
           "value": "files.oaiusercontent.com"
         }
       ]
     },
     {
-      "id": "maz64qf0",
+      "id": "pzaqw2h7",
       "name": "x",
       "items": [
         {
-          "id": "puxq45gg",
+          "id": "x4z486v1",
           "type": "cidr",
           "value": "192.133.77.0/26"
         },
         {
-          "id": "g7i6e9io",
+          "id": "8cjv089m",
           "type": "domain",
           "value": "x.com"
         },
         {
-          "id": "it32zvxi",
+          "id": "hilsdf6n",
           "type": "cidr",
           "value": "64.63.15.0/24"
         },
         {
-          "id": "75v2a15b",
+          "id": "ql1mskss",
           "type": "cidr",
           "value": "199.59.148.0/22"
         },
         {
-          "id": "w70s8nju",
+          "id": "k3bxyq3q",
           "type": "cidr",
           "value": "64.63.31.0/24"
         },
         {
-          "id": "9mti2jba",
+          "id": "egeccik1",
           "type": "cidr",
           "value": "202.160.130.0/24"
         },
         {
-          "id": "bbvqlm28",
+          "id": "d51ee9ab",
           "type": "cidr",
           "value": "64.63.47.0/24"
         },
         {
-          "id": "myex4x0o",
+          "id": "8tmtaqef",
           "type": "cidr",
           "value": "202.160.129.0/24"
         },
         {
-          "id": "301qimu8",
+          "id": "nmka1v35",
           "type": "cidr",
           "value": "202.160.128.0/24"
         },
         {
-          "id": "vitev0p6",
+          "id": "fs75j5tx",
           "type": "cidr",
           "value": "104.244.42.0/24"
         }
       ]
     },
     {
-      "id": "nclb6bo3",
+      "id": "yo6r18kn",
       "name": "microsoft",
       "items": [
         {
-          "id": "1stmy60d",
+          "id": "3uyl9x74",
           "type": "cidr",
           "value": "13.107.4.50"
         },
         {
-          "id": "ftrt0tuh",
+          "id": "3r99wigk",
           "type": "cidr",
           "value": "13.107.5.88"
         },
         {
-          "id": "54k9yylp",
+          "id": "v3uok3fg",
           "type": "cidr",
           "value": "20.36.0.0/14"
         },
         {
-          "id": "cqgordlg",
+          "id": "fiqw9oxq",
           "type": "cidr",
           "value": "20.190.128.0/18"
         },
         {
-          "id": "0w86lnzk",
+          "id": "f2l7340c",
           "type": "cidr",
           "value": "204.79.197.219"
         },
         {
-          "id": "8a2drs1s",
+          "id": "2eytjdra",
           "type": "cidr",
           "value": "23.72.96.0/19"
         },
         {
-          "id": "yauzzrl7",
+          "id": "41lgpabn",
           "type": "cidr",
           "value": "104.81.0.0/16"
         },
         {
-          "id": "pde88ew4",
+          "id": "ayv7mzbf",
           "type": "cidr",
           "value": "93.184.221.240"
         }
       ]
     },
     {
-      "id": "wjg2nubo",
+      "id": "751jus3f",
       "name": "Torrent",
       "items": [
         {
-          "id": "yadpgxi2",
+          "id": "v0z17zr8",
           "type": "domain",
           "value": "rutor.info"
         },
         {
-          "id": "6gueeejl",
+          "id": "ulshrhgr",
           "type": "domain",
           "value": "rutracker.org"
         }
       ]
     },
     {
-      "id": "btc0im97",
+      "id": "utjp9vpx",
       "name": "youtube",
       "items": [
         {
-          "id": "i3dvlu7g",
+          "id": "2tyl8l2g",
           "type": "cidr",
           "value": "8.8.4.0/24"
         },
         {
-          "id": "s5zj72ag",
+          "id": "e3upvl6o",
           "type": "cidr",
           "value": "8.8.8.0/24"
         },
         {
-          "id": "sgnf10bd",
+          "id": "8zgrbhpt",
           "type": "cidr",
           "value": "64.15.112.0/20"
         },
         {
-          "id": "2k3r1kwt",
+          "id": "6bs11kj8",
           "type": "cidr",
           "value": "74.125.0.0/16"
         },
         {
-          "id": "vco9f48b",
+          "id": "sbbwr6x0",
           "type": "cidr",
           "value": "142.250.0.0/16"
         },
         {
-          "id": "rgs7jmmg",
+          "id": "neruyjkj",
           "type": "cidr",
           "value": "172.110.32.0/21"
         },
         {
-          "id": "37y2w36y",
+          "id": "whsmfg3s",
           "type": "cidr",
           "value": "172.217.0.0/16"
         },
         {
-          "id": "vt77m5ab",
+          "id": "q9w7fr9l",
           "type": "cidr",
           "value": "172.253.0.0/16"
         },
         {
-          "id": "zf2v8cjl",
+          "id": "w638yhi5",
           "type": "cidr",
           "value": "173.194.0.0/16"
         },
         {
-          "id": "ufg1zufi",
+          "id": "mht5o91t",
           "type": "cidr",
           "value": "173.252.0.0/16"
         },
         {
-          "id": "9avqkykf",
+          "id": "tpmqn4tu",
           "type": "cidr",
           "value": "192.178.0.0/15"
         },
         {
-          "id": "3xazng19",
+          "id": "gy8lfzl0",
           "type": "cidr",
           "value": "208.65.152.0/22"
         },
         {
-          "id": "7phg3dov",
+          "id": "o7ri36h8",
           "type": "cidr",
           "value": "208.117.224.0/19"
         },
         {
-          "id": "qvv0gq88",
+          "id": "pke71jaf",
           "type": "cidr",
           "value": "216.73.80.0/20"
         },
         {
-          "id": "xatftp7r",
+          "id": "afai8ne7",
           "type": "domain",
           "value": "google.com"
         },
         {
-          "id": "7bbnzmab",
+          "id": "i6h7yv9k",
           "type": "cidr",
           "value": "45.64.0.0/16"
         },
         {
-          "id": "gfqgw2e6",
+          "id": "fx311eg7",
           "type": "cidr",
           "value": "108.176.0.0/15"
         },
         {
-          "id": "whlzs8zh",
+          "id": "mvnsfla6",
           "type": "cidr",
           "value": "142.251.0.0/16"
         },
         {
-          "id": "iwz6f4ud",
+          "id": "zwcywxft",
           "type": "domain",
           "value": "youtube.com"
         },
         {
-          "id": "9ikfyucc",
+          "id": "z910wlsa",
           "type": "cidr",
           "value": "95.182.120.241"
         },
         {
-          "id": "xy8hm8ga",
+          "id": "cgrrgd05",
           "type": "domain",
           "value": "labs.google"
         },
         {
-          "id": "np1x5i33",
+          "id": "mlblghq6",
           "type": "domain",
           "value": "lookerstudio.google.com"
         },
         {
-          "id": "2gslg6vs",
+          "id": "9atjk8p4",
           "type": "cidr",
           "value": "142.251.1.198"
         },
         {
-          "id": "zc4kk0ff",
+          "id": "uzf1abm5",
           "type": "cidr",
           "value": "216.239.38.223"
         },
         {
-          "id": "seb6kh40",
+          "id": "nqhb9f9n",
           "type": "cidr",
           "value": "173.194.221.198"
         },
         {
-          "id": "8nby5bb5",
+          "id": "8ixc3k5u",
           "type": "cidr",
           "value": "173.194.73.138"
         },
         {
-          "id": "zhqg3vyc",
+          "id": "rkhpteil",
           "type": "cidr",
           "value": "173.194.221.119"
         },
         {
-          "id": "gs9vtsok",
+          "id": "iiv7oac1",
           "type": "cidr",
           "value": "216.239.34.223"
         },
         {
-          "id": "tnhgn5x7",
+          "id": "czy8fsvy",
           "type": "cidr",
           "value": "172.217.21.174"
         },
         {
-          "id": "hangq08s",
+          "id": "m15j101h",
           "type": "cidr",
           "value": "142.251.38.118"
         },
         {
-          "id": "252lsf39",
+          "id": "m2z7pr80",
           "type": "cidr",
           "value": "172.217.20.161"
         },
         {
-          "id": "79viugly",
+          "id": "l4q2w2z7",
           "type": "cidr",
           "value": "142.251.143.142"
         },
         {
-          "id": "dkcyx7ty",
+          "id": "zaofdixk",
           "type": "cidr",
           "value": "142.251.38.100"
         },
         {
-          "id": "pmp4igzb",
+          "id": "guqsill5",
           "type": "cidr",
           "value": "142.250.150.101"
         },
         {
-          "id": "id1mc1dl",
+          "id": "hz5cjmmu",
           "type": "cidr",
           "value": "216.58.207.206"
         },
         {
-          "id": "37duhjzj",
+          "id": "nwesm3bv",
           "type": "cidr",
           "value": "142.251.143.150"
         },
         {
-          "id": "letsclc4",
+          "id": "98fuuth4",
           "type": "cidr",
           "value": "142.251.143.129"
         },
         {
-          "id": "2fg5r1rs",
+          "id": "nhnw6xow",
           "type": "cidr",
           "value": "216.239.32.223"
         },
         {
-          "id": "o8pf36ol",
+          "id": "nfxc1gls",
           "type": "cidr",
           "value": "216.58.207.238"
         },
         {
-          "id": "j9t9luht",
+          "id": "bvwg547u",
           "type": "cidr",
           "value": "172.217.19.228"
         },
         {
-          "id": "06ty7qbp",
+          "id": "zqtulqy9",
           "type": "cidr",
           "value": "173.194.220.147"
         },
         {
-          "id": "t9spmuw2",
+          "id": "4o4u2q3g",
           "type": "cidr",
           "value": "172.253.130.198"
         },
         {
-          "id": "0pwrn104",
+          "id": "uuzar6tc",
           "type": "cidr",
           "value": "142.251.1.119"
         },
         {
-          "id": "g0tjvty1",
+          "id": "w6kzcv4o",
           "type": "cidr",
           "value": "172.253.130.113"
         },
         {
-          "id": "0ey8joff",
+          "id": "5zku0561",
           "type": "cidr",
           "value": "216.239.36.223"
         },
         {
-          "id": "g5b6pwxh",
+          "id": "1wcod0qt",
           "type": "cidr",
           "value": "209.85.233.139"
         },
         {
-          "id": "m6rm393j",
+          "id": "85o2vxen",
           "type": "cidr",
           "value": "8.34.208.0/20"
         },
         {
-          "id": "0mugcall",
+          "id": "ociwrgh0",
           "type": "cidr",
           "value": "8.35.192.0/20"
         },
         {
-          "id": "xky18r7a",
+          "id": "afdl2lus",
           "type": "cidr",
           "value": "23.236.48.0/20"
         },
         {
-          "id": "if7epivk",
+          "id": "kyawh5ja",
           "type": "cidr",
           "value": "23.251.128.0/19"
         },
         {
-          "id": "m810tbup",
+          "id": "10v21wza",
           "type": "cidr",
           "value": "34.0.0.0/15"
         },
         {
-          "id": "agbpcpx3",
+          "id": "8l99dwxn",
           "type": "cidr",
           "value": "34.2.0.0/16"
         },
         {
-          "id": "nkd1d5os",
+          "id": "xy40jxv5",
           "type": "cidr",
           "value": "34.3.0.0/23"
         },
         {
-          "id": "glrjue2p",
+          "id": "9c3wlyzt",
           "type": "cidr",
           "value": "34.3.3.0/24"
         },
         {
-          "id": "wg6ov86e",
+          "id": "aewk7b7i",
           "type": "cidr",
           "value": "34.3.4.0/24"
         },
         {
-          "id": "b50xkdcr",
+          "id": "v8k8ddn7",
           "type": "cidr",
           "value": "34.3.8.0/21"
         },
         {
-          "id": "fey5qker",
+          "id": "cq01180t",
           "type": "cidr",
           "value": "34.3.16.0/20"
         },
         {
-          "id": "ucvwhsqm",
+          "id": "iakuvacc",
           "type": "cidr",
           "value": "34.3.32.0/19"
         },
         {
-          "id": "48xq2w7c",
+          "id": "pf42j50z",
           "type": "cidr",
           "value": "34.3.64.0/18"
         },
         {
-          "id": "93yp3n2p",
+          "id": "lucwdlo4",
           "type": "cidr",
           "value": "64.233.160.0/19"
         },
         {
-          "id": "wecv1i5e",
+          "id": "w6z0gmvf",
           "type": "cidr",
           "value": "66.102.0.0/20"
         },
         {
-          "id": "wnq11rnv",
+          "id": "qf1nq2yh",
           "type": "cidr",
           "value": "66.249.64.0/19"
         },
         {
-          "id": "avas84zq",
+          "id": "fj6rmaso",
           "type": "cidr",
           "value": "70.32.128.0/19"
         },
         {
-          "id": "9gdkio1u",
+          "id": "4ja2nv3g",
           "type": "cidr",
           "value": "72.14.192.0/18"
         },
         {
-          "id": "v3caql8h",
+          "id": "kb6fk3lv",
           "type": "cidr",
           "value": "108.59.80.0/20"
         },
         {
-          "id": "pe1bpg4s",
+          "id": "b1fl4ywf",
           "type": "cidr",
           "value": "108.170.192.0/18"
         },
         {
-          "id": "ws0v78d3",
+          "id": "7c7hdt6a",
           "type": "cidr",
           "value": "142.250.0.0/15"
         },
         {
-          "id": "6qvf9dbj",
+          "id": "4m23ehu1",
           "type": "cidr",
           "value": "209.85.128.0/17"
         },
         {
-          "id": "yxzeog6w",
+          "id": "kov4p24h",
           "type": "cidr",
           "value": "216.58.192.0/19"
         },
         {
-          "id": "m7o1r79w",
+          "id": "ltwsf4dw",
           "type": "cidr",
           "value": "216.239.32.0/19"
         },
         {
-          "id": "3d8lb2fn",
+          "id": "icsvmdkm",
           "type": "domain",
           "value": "www.youtube.com"
         },
         {
-          "id": "pi3i9b41",
+          "id": "tuco664a",
           "type": "domain",
           "value": "m.youtube.com"
         },
         {
-          "id": "wsp144wc",
+          "id": "git39xhk",
           "type": "domain",
           "value": "music.youtube.com"
         },
         {
-          "id": "tmxgh08d",
+          "id": "bki0lm5w",
           "type": "domain",
           "value": "youtubei.googleapis.com"
         },
         {
-          "id": "112atow6",
+          "id": "ef256bd7",
           "type": "domain",
           "value": "youtube.googleapis.com"
         },
         {
-          "id": "m6k7xpxm",
+          "id": "3sw3ja9a",
           "type": "domain",
           "value": "googlevideo.com"
         },
         {
-          "id": "ma3zo6or",
+          "id": "8msac29s",
           "type": "domain",
           "value": "redirector.googlevideo.com"
         },
         {
-          "id": "ztm5nyky",
+          "id": "1adjtrb9",
           "type": "domain",
           "value": "ytimg.com"
         },
         {
-          "id": "6d7calmw",
+          "id": "bt3rgv0e",
           "type": "domain",
           "value": "i.ytimg.com"
         },
         {
-          "id": "hnfrrveu",
+          "id": "mfnrxmyc",
           "type": "domain",
           "value": "s.ytimg.com"
         },
         {
-          "id": "mcc2hb09",
+          "id": "01ipzbyz",
           "type": "domain",
           "value": "ggpht.com"
         },
         {
-          "id": "pe28kusv",
+          "id": "wab9oj8x",
           "type": "domain",
           "value": "youtube-nocookie.com"
         },
         {
-          "id": "pqrk7alh",
+          "id": "g9mscqo8",
           "type": "domain",
           "value": "jnn-pa.googleapis.com"
         }
       ]
     },
     {
-      "id": "6dxwv56d",
+      "id": "497q4xor",
       "name": "to VPN",
       "items": [
         {
-          "id": "m4di9pkj",
+          "id": "bm8yxbpd",
+          "type": "domain",
+          "value": "musicbrainz.org"
+        },
+        {
+          "id": "j9iok691",
           "type": "domain",
           "value": "kling.ai"
         },
         {
-          "id": "xn315f1t",
+          "id": "4zzdfdo5",
           "type": "cidr",
           "value": "23.35.104.0/24"
         },
         {
-          "id": "lvd7l4j9",
+          "id": "v5dv4vwk",
           "type": "domain",
           "value": "clawhub.ai"
         },
         {
-          "id": "2ggez7p9",
+          "id": "5wwvsc8c",
           "type": "domain",
           "value": "clamav.net"
         },
         {
-          "id": "z1m4100m",
+          "id": "6cg2ap4e",
           "type": "domain",
           "value": "elevenlabs.io"
         },
         {
-          "id": "8pwt7y07",
+          "id": "9y9o558a",
           "type": "domain",
           "value": "challenges.cloudflare.com"
         },
         {
-          "id": "7e4g6v8y",
+          "id": "ez8g7rp8",
           "type": "domain",
           "value": "cloudflare.com"
         },
         {
-          "id": "ycjkafhh",
+          "id": "43dw9yu5",
           "type": "domain",
           "value": "googleusercontent.com"
         },
         {
-          "id": "iv6xnf6j",
+          "id": "np7sy1ch",
           "type": "domain",
           "value": "googleapis.com"
         },
         {
-          "id": "f5xjf9e4",
+          "id": "re4fxrg0",
           "type": "domain",
           "value": "generativelanguage.googleapis.com"
         },
         {
-          "id": "5o24cozc",
+          "id": "ku3oueyy",
           "type": "domain",
           "value": "oauth2.googleapis.com"
         },
         {
-          "id": "l3ijj5v7",
+          "id": "08lvnexz",
           "type": "domain",
           "value": "fonts.gstatic.com"
         },
         {
-          "id": "kc60nzem",
+          "id": "cdy40j5f",
           "type": "domain",
           "value": "www.gstatic.com"
         },
         {
-          "id": "5220jn0w",
+          "id": "wan9f42z",
           "type": "domain",
           "value": "content-storage-upload.googleapis.com"
         },
         {
-          "id": "pyfrpc4x",
+          "id": "ebccnsc7",
           "type": "domain",
           "value": "cloud.google.com"
         },
         {
-          "id": "u9o426zi",
+          "id": "gi57gwqs",
           "type": "domain",
           "value": "lh3.googleusercontent.com"
         },
         {
-          "id": "cyjhzwon",
+          "id": "lezvw7rt",
           "type": "domain",
           "value": "ssl.gstatic.com"
         },
         {
-          "id": "vv7xluqn",
+          "id": "2aa7vhfw",
           "type": "domain",
           "value": "www.intel.com"
         },
         {
-          "id": "qvghk8j2",
+          "id": "alhckpx4",
           "type": "domain",
           "value": "joxi.ru"
+        },
+        {
+          "id": "8lxxibo3",
+          "type": "domain",
+          "value": "flashforge.com"
         }
       ]
     },
     {
-      "id": "dfuzpkp7",
+      "id": "hc0smh25",
       "name": "Claude",
       "items": [
         {
-          "id": "t4rrbznu",
+          "id": "fh90sgg9",
           "type": "cidr",
           "value": "13.249.141.0/24"
         },
         {
-          "id": "arx406u9",
+          "id": "vftkrvao",
           "type": "cidr",
           "value": "108.157.229.0/24"
         }
       ]
     },
     {
-      "id": "oougnixk",
+      "id": "gat9laqo",
       "name": "Grok",
       "items": [
         {
-          "id": "vpfzgxpg",
+          "id": "jh9b334k",
           "type": "domain",
           "value": "grok.com"
         }
       ]
     },
     {
-      "id": "ycnfbnh5",
+      "id": "5uwyqgx9",
       "name": "Google",
       "items": [
         {
-          "id": "87e92vc9",
+          "id": "wekcehfd",
           "type": "domain",
           "value": "aistudio.google.com"
         },
         {
-          "id": "cjosyqbe",
+          "id": "n3oerrtt",
           "type": "domain",
           "value": "ai.google.dev"
         },
         {
-          "id": "i196gwvk",
+          "id": "m95vp5bh",
           "type": "domain",
           "value": "accounts.google.com"
         },
         {
-          "id": "5as09gto",
+          "id": "bl6shxh3",
           "type": "domain",
           "value": "apis.google.com"
         },
         {
-          "id": "0slr4xcj",
+          "id": "c4cwrakm",
           "type": "domain",
           "value": "clientservices.googleapis.com"
         },
         {
-          "id": "p7c1zpth",
+          "id": "wojdyptz",
           "type": "domain",
           "value": "docs.google.com"
         },
         {
-          "id": "4l4dohkg",
+          "id": "cwg6ofp8",
           "type": "domain",
           "value": "antigravity.google"
         },
         {
-          "id": "4qtb0too",
+          "id": "qncciddx",
           "type": "domain",
           "value": "gemini.google.com"
         },
         {
-          "id": "hg7q6ded",
+          "id": "1bd5tmed",
           "type": "domain",
           "value": "play.google.com"
         },
         {
-          "id": "tl5lhai6",
+          "id": "kvfbel3k",
           "type": "domain",
           "value": "notebooklm.google"
         },
         {
-          "id": "1zp0bn6h",
+          "id": "9b7h5n8j",
           "type": "cidr",
           "value": "142.250.74.14"
         },
         {
-          "id": "anrrachk",
+          "id": "immdj3vn",
           "type": "cidr",
           "value": "142.250.150.113"
         },
         {
-          "id": "btsk7hyz",
+          "id": "0wviekuc",
           "type": "cidr",
           "value": "172.217.19.238"
         },
         {
-          "id": "cd69do6b",
+          "id": "qyd6nrfr",
           "type": "cidr",
           "value": "173.194.221.102"
         },
         {
-          "id": "dvsqufzb",
+          "id": "b1enw7nm",
           "type": "cidr",
           "value": "216.58.201.238"
         },
         {
-          "id": "pjg9ofi0",
+          "id": "zeoi8u8f",
           "type": "cidr",
           "value": "142.251.1.138"
         },
         {
-          "id": "z0d27014",
+          "id": "5m2oaitq",
           "type": "cidr",
           "value": "209.85.233.101"
         },
         {
-          "id": "3gkfy968",
+          "id": "f5cnarf8",
           "type": "cidr",
           "value": "142.251.1.102"
         },
         {
-          "id": "e2m9ubte",
+          "id": "0t9bmjhs",
           "type": "cidr",
           "value": "216.58.201.206"
         },
         {
-          "id": "mlslpvc0",
+          "id": "2orzrdmk",
           "type": "cidr",
           "value": "173.194.221.138"
         },
         {
-          "id": "z4txorxo",
+          "id": "ki78r6om",
           "type": "cidr",
           "value": "142.251.20.139"
         },
         {
-          "id": "m1u9qff1",
+          "id": "jl19z79e",
           "type": "cidr",
           "value": "172.217.20.174"
         },
         {
-          "id": "ezh5s3k2",
+          "id": "gzlqobn6",
           "type": "cidr",
           "value": "192.178.25.14"
         },
         {
-          "id": "2lkeci0k",
+          "id": "lzdwa1bh",
           "type": "cidr",
           "value": "173.194.222.101"
         },
         {
-          "id": "1zy89jzi",
+          "id": "lbnme7qg",
           "type": "cidr",
           "value": "216.58.201.174"
         }
       ]
     },
     {
-      "id": "1wkk8be9",
+      "id": "jfl8slfs",
       "name": "VS Code",
       "items": [
         {
-          "id": "znmtwfky",
+          "id": "ysii1640",
           "type": "domain",
           "value": "marketplace.visualstudio.com"
         },
         {
-          "id": "4xxs28x2",
+          "id": "zwpzwroh",
           "type": "domain",
           "value": "gallery.vsassets.io"
         },
         {
-          "id": "7ofg2zr2",
+          "id": "csh7qbp4",
           "type": "domain",
           "value": "vsassets.io"
         },
         {
-          "id": "f3g7h4kj",
+          "id": "d2km1l5a",
           "type": "domain",
           "value": "update.code.visualstudio.com"
         },
         {
-          "id": "ypa5uf4p",
+          "id": "k7jkdmme",
           "type": "domain",
           "value": "vscode.download.prss.microsoft.com"
         },
         {
-          "id": "1ebjgydu",
+          "id": "1lp1axw1",
           "type": "domain",
           "value": "gallerycdn.vsassets.io"
         },
         {
-          "id": "ydtld9xx",
+          "id": "r4ofoxdc",
           "type": "domain",
           "value": "godexintl.com"
         }
       ]
     },
     {
-      "id": "ecv0isua",
+      "id": "0ciwcob8",
       "name": "Telegram",
       "items": [
         {
-          "id": "m15vnyw1",
+          "id": "z9ijxb1m",
           "type": "domain",
           "value": "telegram.org"
         },
         {
-          "id": "udkuqqwl",
+          "id": "3vvetzpy",
           "type": "domain",
           "value": "api.telegram.org"
         },
         {
-          "id": "lcsk76tm",
+          "id": "v48y93o2",
           "type": "domain",
           "value": "web.telegram.org"
         },
         {
-          "id": "gciu3vjq",
+          "id": "i99i73j3",
           "type": "domain",
           "value": "t.me"
         },
         {
-          "id": "ifeie26t",
+          "id": "0cqcvub4",
           "type": "cidr",
           "value": "149.154.160.0/20"
         },
         {
-          "id": "84ua7rjy",
+          "id": "6dqryj1a",
           "type": "cidr",
           "value": "91.108.4.0/22"
         },
         {
-          "id": "tp70jzkd",
+          "id": "h00oh1hk",
           "type": "cidr",
           "value": "91.108.8.0/22"
         },
         {
-          "id": "66bnizum",
+          "id": "1n7zftyc",
           "type": "cidr",
           "value": "91.108.12.0/22"
         },
         {
-          "id": "4o1hsuh8",
+          "id": "s46joca2",
           "type": "cidr",
           "value": "91.108.16.0/22"
         },
         {
-          "id": "p92iyi5u",
+          "id": "baeb5xhn",
           "type": "cidr",
           "value": "91.108.20.0/22"
         },
         {
-          "id": "zulj6sdk",
+          "id": "rxphxola",
           "type": "cidr",
           "value": "91.108.56.0/22"
         },
         {
-          "id": "bejdimqm",
+          "id": "ejty36vu",
           "type": "cidr",
           "value": "91.105.192.0/23"
         },
         {
-          "id": "3pxdwnub",
+          "id": "9hd7yoih",
           "type": "cidr",
           "value": "185.76.151.0/24"
         },
         {
-          "id": "8378cgwi",
+          "id": "mp86o2o6",
           "type": "cidr",
           "value": "95.161.64.0/20"
         },
         {
-          "id": "j1riq9yb",
+          "id": "wvrkyc7w",
           "type": "cidr",
           "value": "149.154.172.0/22"
         },
         {
-          "id": "9azb8y8m",
+          "id": "sz63c2lw",
           "type": "cidr",
           "value": "149.154.168.0/22"
         },
         {
-          "id": "ayrl5bnt",
+          "id": "3hkasfap",
           "type": "cidr",
           "value": "149.154.164.0/22"
         },
         {
-          "id": "y1wt5bni",
+          "id": "51hwow4s",
           "type": "cidr",
           "value": "149.154.167.0/24"
         },
         {
-          "id": "y6cdhkzy",
+          "id": "ccth37km",
           "type": "cidr",
           "value": "149.154.175.0/24"
         }
