@@ -214,6 +214,7 @@ s.ytimg.com#youtube
 ggpht.com#youtube
 youtube-nocookie.com#youtube
 jnn-pa.googleapis.com#youtube
+musicbrainz.org#to VPN
 kling.ai#to VPN
 23.35.104.0/24#to VPN
 clawhub.ai#to VPN
@@ -233,6 +234,7 @@ lh3.googleusercontent.com#to VPN
 ssl.gstatic.com#to VPN
 www.intel.com#to VPN
 joxi.ru#to VPN
+flashforge.com#to VPN
 13.249.141.0/24#Claude
 108.157.229.0/24#Claude
 grok.com#Grok
@@ -287,4 +289,3 @@ t.me#Telegram
 149.154.164.0/22#Telegram
 149.154.167.0/24#Telegram
 149.154.175.0/24#Telegram
-flashforge.com#to VPN
