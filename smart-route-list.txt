@@ -13,6 +13,8 @@ i.instagram.com#insta
 b.i.instagram.com#insta
 graph.instagram.com#insta
 cdninstagram.com#insta
+static.cdninstagram.com#insta
+scontent.cdninstagram.com#insta
 fbcdn.net#insta
 facebook.com#insta
 www.facebook.com#insta
@@ -21,6 +23,7 @@ graph.facebook.com#insta
 connect.facebook.net#insta
 fb.com#insta
 messenger.com#insta
+whatsapp.net#insta
 31.13.24.0/21#insta
 31.13.64.0/18#insta
 45.64.40.0/22#insta
@@ -150,6 +153,7 @@ google.com#youtube
 108.176.0.0/15#youtube
 142.251.0.0/16#youtube
 youtube.com#youtube
+youtu.be#youtube
 95.182.120.241#youtube
 labs.google#youtube
 lookerstudio.google.com#youtube
@@ -206,13 +210,19 @@ m.youtube.com#youtube
 music.youtube.com#youtube
 youtubei.googleapis.com#youtube
 youtube.googleapis.com#youtube
+youtubeembeddedplayer.googleapis.com#youtube
 googlevideo.com#youtube
 redirector.googlevideo.com#youtube
 ytimg.com#youtube
 i.ytimg.com#youtube
 s.ytimg.com#youtube
 ggpht.com#youtube
+yt3.ggpht.com#youtube
 youtube-nocookie.com#youtube
+gvt1.com#youtube
+gvt2.com#youtube
+gvt3.com#youtube
+1e100.net#youtube
 jnn-pa.googleapis.com#youtube
 musicbrainz.org#to VPN
 kling.ai#to VPN
