@@ -240,6 +240,7 @@ fonts.gstatic.com#to VPN
 www.gstatic.com#to VPN
 content-storage-upload.googleapis.com#to VPN
 cloud.google.com#to VPN
+dropbox.com#to VPN
 lh3.googleusercontent.com#to VPN
 ssl.gstatic.com#to VPN
 www.intel.com#to VPN
