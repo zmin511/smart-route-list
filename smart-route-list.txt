@@ -243,6 +243,7 @@ cloud.google.com#to VPN
 dropbox.com#to VPN
 lh3.googleusercontent.com#to VPN
 ssl.gstatic.com#to VPN
+autodesk.com#to VPN
 www.intel.com#to VPN
 joxi.ru#to VPN
 flashforge.com#to VPN
