@@ -245,6 +245,7 @@ lh3.googleusercontent.com#to VPN
 ssl.gstatic.com#to VPN
 autodesk.com#to VPN
 www.intel.com#to VPN
+airtable.com#to VPN
 joxi.ru#to VPN
 flashforge.com#to VPN
 13.249.141.0/24#Claude
